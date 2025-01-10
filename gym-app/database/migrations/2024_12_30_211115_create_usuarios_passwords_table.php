@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('usuarios_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token')->unique();
-            $table->foreignId('id_usuario')->constrained('usuarios')->onDelete('cascade');
-            $table->timestamp('created_at')->nullable();
+        Schema::create('usuarios_passwords', function (Blueprint $table) {
+            $table->id();
+            $table->string('password');
+            $table->foreignId('usuario_id')->constrained('usuarios')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('usuarios_tokens');
+        Schema::dropIfExists('usuarios_passwords');
     }
 };
