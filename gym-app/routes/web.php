@@ -9,3 +9,9 @@ Route::get('/', function () {
 Route::get('/contacto', function () {
     return view('contacto'); // El nombre de tu vista Blade
 })->name('contacto');
+
+use App\Http\Controllers\CrearActividadController;
+
+Route::get('/actividades/create', [CrearActividadController::class, 'create'])->name('actividades.CrearActividades');
+Route::post('/actividades', [CrearActividadController::class, 'store'])->name('actividades.store');
+
