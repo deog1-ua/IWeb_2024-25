@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('direcciones', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('usuario_id')->constrained('usuarios')->onDelete('cascade');
             $table->string('pais');
             $table->string('provincia');
             $table->string('municipio');
-            $table->string('cp', 5);
+            $table->string('cp');
             $table->string('direccion_envio');
             $table->timestamps();
         });
