@@ -15,7 +15,7 @@
                     <div class="carousel-caption text-center">
                         <h1>Transforma tu Cuerpo y tu mente</h1>
                         <p class="leads">Alcanza tus objetivos con nuestro equipo de expertos, instalaciones de primera y una comunidad que te apoya.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#">HACERME SOCIO</a></p>
+                        <p><a class="btn btn-lg btn-primary" href="/registro">HACERME SOCIO</a></p>
                     </div>
                 </div>
             </div>
