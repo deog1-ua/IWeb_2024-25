@@ -45,3 +45,25 @@
 
     }
 }
+
+.card-registro {
+    border: 1px solid #B70F0A;
+    padding: 1em;
+    margin-top: 1.5em;
+
+    h6 {
+        color: #6c757d;
+    }
+
+    button {
+        margin-top: 1em;
+        background-color: #B70F0A;
+        color: #f8fafc;
+        border: 1px solid #B70F0A;
+        width: 120px;
+        &:hover {
+            background-color: #f8fafc;
+            color: #B70F0A;
+        }
+    }
+}

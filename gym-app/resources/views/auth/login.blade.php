@@ -34,7 +34,7 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="text-center mb-3">
-                        <button type="submit" class="btn btn-outline-dark">Iniciar sesión</button>
+                        <button type="submit" class="btn btn-outline-danger">Iniciar sesión</button>
                     </div>
                     
                     <div class="col-auto">
