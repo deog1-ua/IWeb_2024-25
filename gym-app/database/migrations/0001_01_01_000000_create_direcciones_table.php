@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('horarios', function (Blueprint $table) {
+        Schema::create('direcciones', function (Blueprint $table) {
             $table->id();
-            $table->time('hora_inicio');
-            $table->time('hora_fin');
-            $table->date('fecha');
-            $table->string('sala');
-            $table->integer('aforo');
+            $table->string('pais');
+            $table->string('provincia');
+            $table->string('municipio');
+            $table->string('cp');
+            $table->string('direccion_envio');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('horarios');
+        Schema::dropIfExists('direcciones');
     }
 };

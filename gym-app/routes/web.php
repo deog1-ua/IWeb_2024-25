@@ -21,3 +21,11 @@ use App\Http\Controllers\HorarioController;
 Route::get('/horarios-por-fecha', [HorarioController::class, 'getHorariosPorFecha']);
 
 
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
+Route::get('/registro', function () {
+    return view('auth.registro');
+});
+

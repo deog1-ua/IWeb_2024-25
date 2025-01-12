@@ -1,27 +1,23 @@
 <?php
 
 namespace App\Models;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Database\Eloquent\Model;
 
-class Horario extends Model
+class Pago extends Model
 {
     use HasFactory;
 
-    protected $table = 'horarios';
+    protected $table = 'historico_pagos';
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-
     protected $fillable = [
-        'hora_inicio',
-        'hora_fin',
         'fecha',
-        'sala',
-        'aforo',
-        'actividad_id'
+        'cantidad',
+        'usuario_id'
     ];
 
     /**
@@ -36,14 +32,8 @@ class Horario extends Model
         ];
     }
 
-    public function reserva()
+    public function user()
     {
-        return $this->hasMany(Reserva::class);
+        return $this->belongsTo(User::class);
     }
-
-    public function actividad() {
-        
-        return $this->belongsTo(Actividad::class);
-    }
-
 }
