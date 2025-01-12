@@ -36,7 +36,7 @@
                 <a class="nav-link" href="#">Contacto</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Sobre Nosotros</a>
+                <a class="nav-link" href="/sobre-nosotros">Sobre Nosotros</a>
             </li>
         </ul>
         <!-- Right Side Of Navbar -->
