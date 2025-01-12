@@ -15,10 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('nombre')->unique();
             $table->text('descripcion');
+            $table->string('imagen');
             $table->float('importe', 8, 2);
-            $table->integer('aforo');
-            $table->foreignId('id_monitor')->constrained('usuarios');
-            $table->foreignId('id_horario')->constrained('horarios');
+            $table->foreignId('usuario_id')->constrained('usuarios')->onDelete('cascade');
             $table->timestamps();
         });
     }
