@@ -67,3 +67,31 @@
         }
     }
 }
+
+.card-registrado{
+    a {
+        background-color: #B70F0A;
+        color: #f8fafc;
+        border: 1px solid #B70F0A;
+        &:hover {
+            background-color: #f8fafc;
+            color: #B70F0A;
+        }
+    }
+}
+
+.card-dashboard {
+    .card-title {
+        color: #B70F0A;
+    }
+
+    a {
+        background-color: #B70F0A;
+        color: #f8fafc;
+        border: 1px solid #B70F0A;
+        &:hover {
+            background-color: #f8fafc;
+            color: #B70F0A;
+        }
+    }
+}
