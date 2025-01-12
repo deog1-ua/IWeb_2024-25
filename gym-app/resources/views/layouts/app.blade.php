@@ -53,13 +53,16 @@
             @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
+                            {{ Auth::user()->nombre }}
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             @guest
                             @else
-                                @if (Auth::user()->type == "admin")
+                                <a class="dropdown-item" href="/perfil" style="margin-bottom: 10px;">
+                                    Mi Perfil
+                                </a>   
+                                @if (Auth::user()->tipo_usuario == "admin")
                                     <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
                                         Usuarios
                                     </a>
@@ -69,19 +72,13 @@
                                 @endif
                             @endguest
                             
-                            @if (Auth::user()->type == "monitor")
-                                <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
-                                    Mi Perfil
-                                </a>
+                            @if (Auth::user()->tipo_usuario == "monitor")
                                 <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
                                     Mi Calendario
                                 </a>
                             @endif
 
-                            @if (Auth::user()->type == "socio")
-                                <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
-                                    Mi Perfil
-                                </a>
+                            @if (Auth::user()->tipo_usuario == "socio")
                                 <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
                                     Mis reservas
                                 </a>

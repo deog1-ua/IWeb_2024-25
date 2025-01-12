@@ -88,8 +88,8 @@
                             <option value="" disabled selected>Seleccione una opción</option>
                             <option value="hombre" {{ old('genero') == 'hombre' ? 'selected' : '' }}>Hombre</option>
                             <option value="mujer" {{ old('genero') == 'mujer' ? 'selected' : '' }}>Mujer</option>
-                            <option value="no_binario" {{ old('genero') == 'no_binario' ? 'selected' : '' }}>No binario</option>
-                            <option value="prefiero_no_decirlo" {{ old('genero') == 'prefiero_no_decirlo' ? 'selected' : '' }}>Prefiero no decirlo</option>
+                            <option value="no binario" {{ old('genero') == 'no binario' ? 'selected' : '' }}>No binario</option>
+                            <option value="prefiero no decirlo" {{ old('genero') == 'prefiero no decirlo' ? 'selected' : '' }}>Prefiero no decirlo</option>
                         </select>
                         @error('genero')
                             <span class="invalid-feedback" role="alert">
