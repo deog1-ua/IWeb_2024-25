@@ -15,3 +15,11 @@ use App\Http\Controllers\CrearActividadController;
 Route::get('/actividades/create', [CrearActividadController::class, 'create'])->name('actividades.CrearActividades');
 Route::post('/actividades', [CrearActividadController::class, 'store'])->name('actividades.store');
 
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
+Route::get('/registro', function () {
+    return view('auth.registro');
+});
+

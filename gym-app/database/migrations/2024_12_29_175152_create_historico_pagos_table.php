@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('fecha');
             $table->float('cantidad');
+            $table->foreignId('usuario_id')->constrained('usuarios')->onDelete('cascade');
             $table->timestamps();
         });
     }
