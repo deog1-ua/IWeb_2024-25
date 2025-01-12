@@ -37,13 +37,13 @@
                             </select>
                         </div>
 
-                        <!-- Monitor -->
+                       <!-- Monitor -->
                         <div class="mb-3">
                             <label for="id_monitor" class="form-label">Monitor</label>
                             <select class="form-select" id="id_monitor" name="id_monitor" required>
                                 <option selected disabled>Selecciona un monitor</option>
                                 @foreach ($monitores as $monitor)
-                                    <option value="{{ $monitor->id }}">{{ $monitor->nombre }}</option>
+                                    <option value="{{ $monitor->id }}">{{ $monitor->nombre }} {{ $monitor->apellidos }}</option>
                                 @endforeach
                             </select>
                         </div>
