@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('fecha');
             $table->string('sala')->unique();
             $table->integer('aforo');
-            $table->foreignId('actividad_id')->constrained('actividades')->onDelete('cascade'); 
+            $table->foreignId('actividad_id')->nullable()->constrained('actividades')->onDelete('cascade'); 
             $table->timestamps();
         });
     }

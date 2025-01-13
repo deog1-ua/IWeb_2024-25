@@ -11,15 +11,21 @@ Route::get('/contacto', function () {
 })->name('contacto');
 
 use App\Http\Controllers\CrearActividadController;
-
-Route::get('/actividades/create', [CrearActividadController::class, 'create'])->name('actividades.CrearActividades');
-Route::post('/actividades', [CrearActividadController::class, 'store'])->name('actividades.store');
-Route::get('/actividades', [ActividadController::class, 'index'])->name('actividades.index');
-
 use App\Http\Controllers\HorarioController;
 
-Route::get('/horarios-por-fecha', [HorarioController::class, 'getHorariosPorFecha']);
+// Ruta para mostrar el formulario
+Route::get('/actividades/create', [CrearActividadController::class, 'create'])->name('actividades.create');
 
+// Ruta para almacenar la actividad
+Route::post('/actividades', [CrearActividadController::class, 'store'])->name('actividades.store');
+
+// Ruta para listar las actividades
+Route::get('/actividades', [CrearActividadController::class, 'index'])->name('actividades.index');
+
+Route::get('/actividades/{id}', [CrearActividadController::class, 'show'])->name('actividades.show');
+
+// Ruta para obtener horarios por fecha
+Route::get('/horarios-por-fecha', [HorarioController::class, 'getHorariosPorFecha']);
 
 Route::get('/login', function () {
     return view('auth.login');
