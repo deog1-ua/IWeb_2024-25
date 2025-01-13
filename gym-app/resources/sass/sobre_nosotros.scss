@@ -9,6 +9,15 @@
 	margin-bottom: 50px;
 }
 
+.titulo2 {
+	color: #444444;
+	font-weight: 700;
+	font-size: 25px;
+	line-height: 1.28;
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+
 .imagen-fondo{
     position: relative;
     padding: 4em 0em;
@@ -31,6 +40,33 @@
         color: #f8fafc;
     }
 }
+
+
+.imagen-fondo-claro {
+    position: relative;
+    padding: 8em 0em; /* Aumentar el padding superior e inferior */
+    text-align: center;
+    background-attachment: fixed;
+    z-index: 1; 
+
+    &:before { 
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.2); /* Blanco con menor transparencia */
+        z-index: -1;
+    }
+
+    h2 {
+        font-size: 2rem;
+        color: black;
+    }
+}
+
+
 
 .sobre-nosotros{
 		color: #3B4754;
@@ -248,4 +284,10 @@
 
 .preguntas{
 	margin-bottom: 60px;
+}
+
+
+.imagen-actividad{
+	width: 120px;
+	height: 80px;
 }

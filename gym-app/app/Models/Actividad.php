@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Actividad extends Model
 {
@@ -26,12 +27,12 @@ class Actividad extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'usuario_id');
     }
 
     public function actividad_socio() {
         
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'actividad_usuario', 'actividad_id', 'usuario_id');
     }
 
     public function horario() {

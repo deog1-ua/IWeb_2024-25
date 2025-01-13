@@ -5,6 +5,8 @@ use App\Http\Controllers\CrearActividadController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\ReservasController;
+use App\Http\Controllers\ActividadController;
 
 
 Route::get('/', function () {
@@ -21,9 +23,11 @@ Route::get('/contacto', function () {
 
 
 
+
 Route::get('/actividades/create', [CrearActividadController::class, 'create'])->name('actividades.CrearActividades');
 Route::post('/actividades', [CrearActividadController::class, 'store'])->name('actividades.store');
-Route::get('/actividades', [ActividadController::class, 'index'])->name('actividades.index');
+Route::get('/actividades', [ActividadController::class, 'listActividades']);
+
 
 Route::get('/horarios-por-fecha', [HorarioController::class, 'getHorariosPorFecha']);
 
@@ -41,14 +45,27 @@ Route::get('/registro', function () {
     return view('auth.registro');
 });
 
+
 Route::post('/registro', [LoginController::class, 'registro']);
 
 Route::middleware(['role:admin'])->group(function () {
     // Poner aquí las rutas que solo puede ver el administrador
+    Route::get('/listado-reservas', [ReservasController::class, 'listReservas']);
 });
 
 Route::middleware(['role:admin,monitor'])->group(function () {
     // Poner aquí las rutas que solo pueden ver el administrador y el monitor
+});
+
+Route::middleware(['role:socio'])->group(function () {
+    // Poner aquí las rutas que solo puede ver el socio
+    Route::get('/mis-reservas', [ReservasController::class, 'listReservasByUser']);
+    Route::get('/mis-reservas/cancelar/{id}', [ReservasController::class, 'deleteReserva']);
+});
+
+Route::middleware(['role:monitor'])->group(function () {
+    // Poner aquí las rutas que pueden ver el administrador, el monitor y el socio
+    Route::get('/mis-actividades', [ActividadController::class, 'listbyMonitor']);
 });
 
 Route::middleware(['role:admin,monitor,socio'])->group(function () {
