@@ -29,6 +29,7 @@ return new class extends Migration
             $table->boolean('activo');
             $table->date('fecha_baja')->nullable();
             $table->float('saldo');
+            $table->string('imagen')->nullable();
             $table->foreignId('direccion_id')->constrained('direcciones')->onDelete('cascade');
             
             $table->rememberToken();

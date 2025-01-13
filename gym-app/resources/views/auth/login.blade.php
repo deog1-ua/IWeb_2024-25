@@ -4,10 +4,10 @@
 
 <div class="container">
     @if ($errors->any())
-        <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+        <div class="alert alert-danger text-danger text-danger-emphasis alert-dismissible fade show mt-2" role="alert">
             <ul class="mb-0" style="list-style: none; padding-left: 0;">
                 @foreach ($errors->all() as $error)
-                    <li><strong>{{ $error }}</strong></li>
+                    <li>{{ $error }}</li>
                 @endforeach
             </ul>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
