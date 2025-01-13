@@ -20,16 +20,16 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        $this->call(DireccionesTableSeeder::class);
+        // Mostramos información por consola 
+        $this->command->info('Direcciones table seeded!');
+
         $this->call(UsuariosTableSeeder::class);
         // Mostramos información por consola 
         $this->command->info('Usuarios table seeded!');
 
         $this->call(UsuariosPasswordsTableSeeder::class);
         // Mostramos información por consola 
-        $this->command->info('Usuarios table seeded!');
-
-        $this->call(DireccionesTableSeeder::class);
-        // Mostramos información por consola 
-        $this->command->info('Usuarios table seeded!');
+        $this->command->info('UsuariosPasswords table seeded!');
     }
 }

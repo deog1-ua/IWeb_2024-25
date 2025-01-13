@@ -33,7 +33,7 @@
                 <a class="nav-link" href="#">Blog</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Contacto</a>
+                <a class="nav-link" href="{{ route('contacto') }}">Contacto</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Sobre Nosotros</a>
@@ -44,22 +44,25 @@
             <!-- Links de autentificación -->
             @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Iniciar sesión</a>
+                        <a class="nav-link" href="/login">Iniciar sesión</a>
                     </li>
                 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Registro</a>
+                        <a class="nav-link" href="/registro">Registro</a>
                     </li>  
             @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
+                            {{ Auth::user()->nombre }}
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             @guest
                             @else
-                                @if (Auth::user()->type == "admin")
+                                <a class="dropdown-item" href="/perfil" style="margin-bottom: 10px;">
+                                    Mi Perfil
+                                </a>   
+                                @if (Auth::user()->tipo_usuario == "admin")
                                     <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
                                         Usuarios
                                     </a>
@@ -69,19 +72,13 @@
                                 @endif
                             @endguest
                             
-                            @if (Auth::user()->type == "monitor")
-                                <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
-                                    Mi Perfil
-                                </a>
+                            @if (Auth::user()->tipo_usuario == "monitor")
                                 <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
                                     Mi Calendario
                                 </a>
                             @endif
 
-                            @if (Auth::user()->type == "socio")
-                                <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
-                                    Mi Perfil
-                                </a>
+                            @if (Auth::user()->tipo_usuario == "socio")
                                 <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
                                     Mis reservas
                                 </a>

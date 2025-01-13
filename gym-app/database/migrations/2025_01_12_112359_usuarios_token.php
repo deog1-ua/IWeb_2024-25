@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('actividad_usuario', function (Blueprint $table) {
+        Schema::create('usuarios_token', function (Blueprint $table) {
             $table->id();
+            $table->string('token');
             $table->foreignId('usuario_id')->constrained('usuarios')->onDelete('cascade');
-            $table->foreignId('actividad_id')->constrained('actividades')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('actividad_usuario');
+        Schema::dropIfExists('usuarios_token');
     }
 };
