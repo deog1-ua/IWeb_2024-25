@@ -31,6 +31,7 @@ class UsuariosTableSeeder extends Seeder
                 'fecha_alta' => now(),
                 'activo' => true,
                 'fecha_baja' => null,
+                'direccion_id' => 1,
             ],
             [
                 'tipo_usuario' => 'admin',
@@ -47,6 +48,7 @@ class UsuariosTableSeeder extends Seeder
                 'fecha_alta' => now(),
                 'activo' => true,
                 'fecha_baja' => null,
+                'direccion_id' => 2,
             ],
             // Monitors
             [
@@ -64,6 +66,7 @@ class UsuariosTableSeeder extends Seeder
                 'fecha_alta' => now(),
                 'activo' => true,
                 'fecha_baja' => null,
+                'direccion_id' => 3,
             ],
             [
                 'tipo_usuario' => 'monitor',
@@ -80,6 +83,7 @@ class UsuariosTableSeeder extends Seeder
                 'fecha_alta' => now(),
                 'activo' => true,
                 'fecha_baja' => null,
+                'direccion_id' => 1,
             ],
             // Socios
             [
@@ -97,6 +101,7 @@ class UsuariosTableSeeder extends Seeder
                 'fecha_alta' => now(),
                 'activo' => true,
                 'fecha_baja' => null,
+                'direccion_id' => 2,
             ],
             [
                 'tipo_usuario' => 'socio',
@@ -113,6 +118,7 @@ class UsuariosTableSeeder extends Seeder
                 'fecha_alta' => now(),
                 'activo' => true,
                 'fecha_baja' => null,
+                'direccion_id' => 3,
             ],
         ];
 

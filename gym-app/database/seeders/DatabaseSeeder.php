@@ -20,6 +20,10 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        $this->call(DireccionesTableSeeder::class);
+        // Mostramos información por consola 
+        $this->command->info('Usuarios table seeded!');
+
         $this->call(UsuariosTableSeeder::class);
         // Mostramos información por consola 
         $this->command->info('Usuarios table seeded!');
@@ -28,8 +32,16 @@ class DatabaseSeeder extends Seeder
         // Mostramos información por consola 
         $this->command->info('Usuarios table seeded!');
 
-        $this->call(DireccionesTableSeeder::class);
-        // Mostramos información por consola 
-        $this->command->info('Usuarios table seeded!');
+        $this->call(ActividadSeeder::class);
+        // Mostramos información por consola
+        $this->command->info('Actividades table seeded!');
+
+        $this->call(HorarioSeeder::class);
+        // Mostramos información por consola
+        $this->command->info('Horarios table seeded!');
+
+        $this->call(ReservaSeeder::class);
+        // Mostramos información por consola
+        $this->command->info('Reservas table seeded!');
     }
 }
