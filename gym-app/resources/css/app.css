@@ -1,3 +1,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.card {
+    border: none; /* Elimina el borde */
+    border-radius: 10px; /* Bordes redondeados */
+}
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.gym-banner-container {
+    position: relative;
+    height: 400px; /* Ajusta la altura del banner según lo necesites */
+    overflow: hidden;
+}
+
+.gym-banner {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantén la proporción y llena el contenedor */
+    filter: brightness(50%); /* Aplica el efecto de opacidad */
+}
+
+.overlay-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.4); /* Fondo oscuro semitransparente */
+    z-index: 1;
+    color: white; /* Asegura que el texto sea blanco */
+}
+
+.gym-banner {
+    height: 500px;
+    object-fit: cover;
+    filter: brightness(50%);
+}
+

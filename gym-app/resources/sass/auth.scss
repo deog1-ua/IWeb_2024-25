@@ -1,0 +1,69 @@
+.card-login {
+    border: 2px solid #B70F0A;
+    padding: 1em;
+    margin-top: 1.5em;
+    h3 {
+        text-align: center;
+        margin-top: 1em;
+        color: #B70F0A;
+    }
+    h6, span {
+        color: #f8fafc;
+
+        a {
+            color: #f8fafc;
+            background-color: #212529;
+            text-decoration: underline;
+
+            &:hover {
+                background-color: #212529;
+                color: #B70F0A;
+            }
+        }
+    }
+    form {
+        input {
+            background-color: #f8fafc;
+            color: #212529;
+            border: 1px solid #B70F0A;
+            &:focus {
+                background-color: #f8fafc;
+                border: 1px solid #B70F0A;
+                color: #212529;
+            }
+        }
+        button {
+            margin-top: 1em;
+            background-color: #B70F0A;
+            color: #f8fafc;
+            border: 1px solid #B70F0A;
+            &:hover {
+                background-color: #f8fafc;
+                color: #B70F0A;
+            }
+        }
+
+    }
+}
+
+.card-registro {
+    border: 1px solid #B70F0A;
+    padding: 1em;
+    margin-top: 1.5em;
+
+    h6 {
+        color: #6c757d;
+    }
+
+    button {
+        margin-top: 1em;
+        background-color: #B70F0A;
+        color: #f8fafc;
+        border: 1px solid #B70F0A;
+        width: 120px;
+        &:hover {
+            background-color: #f8fafc;
+            color: #B70F0A;
+        }
+    }
+}

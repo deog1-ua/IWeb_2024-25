@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('direcciones', function (Blueprint $table) {
+        Schema::create('horarios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('usuario_id')->constrained('usuarios')->onDelete('cascade');
-            $table->string('pais');
-            $table->string('provincia');
-            $table->string('municipio');
-            $table->string('cp');
-            $table->string('direccion_envio');
+            $table->time('hora_inicio');
+            $table->time('hora_fin');
+            $table->date('fecha');
+            $table->string('sala')->unique();
+            $table->integer('aforo');
+            $table->foreignId('actividad_id')->constrained('actividades')->onDelete('cascade'); 
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('direcciones');
+        Schema::dropIfExists('horarios');
     }
 };

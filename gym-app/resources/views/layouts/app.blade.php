@@ -33,7 +33,7 @@
                 <a class="nav-link" href="#">Blog</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Contacto</a>
+                <a class="nav-link" href="{{ route('contacto') }}">Contacto</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/sobre-nosotros">Sobre Nosotros</a>
@@ -44,11 +44,11 @@
             <!-- Links de autentificación -->
             @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Iniciar sesión</a>
+                        <a class="nav-link" href="/login">Iniciar sesión</a>
                     </li>
                 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Registro</a>
+                        <a class="nav-link" href="/registro">Registro</a>
                     </li>  
             @else
                     <li class="nav-item dropdown">

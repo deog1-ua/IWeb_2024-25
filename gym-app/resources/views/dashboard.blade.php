@@ -15,7 +15,7 @@
                     <div class="carousel-caption text-center">
                         <h1>Transforma tu Cuerpo y tu mente</h1>
                         <p class="leads">Alcanza tus objetivos con nuestro equipo de expertos, instalaciones de primera y una comunidad que te apoya.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#">HACERME SOCIO</a></p>
+                        <p><a class="btn btn-lg btn-danger" href="/registro">HACERME SOCIO</a></p>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
             <div class="carousel-caption text-start">
                 <h1>Actividades</h1>
                 <p>Encuentra tu actividad ideal para empezar un nuevo reto.</p>
-                <p><a class="btn btn-lg btn-primary" href="#">Ver Actividades</a></p>
+                <p><a class="btn btn-lg btn-danger" href="#">Ver Actividades</a></p>
             </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
             <div class="carousel-caption text-end">
                 <h1>CENTROS DISPONIBLES</h1>
                 <p>Conoce todos nuestros centros más cerca de ti.</p>
-                <p><a class="btn btn-lg btn-primary" href="#">Ver Centros</a></p>
+                <p><a class="btn btn-lg btn-danger" href="#">Ver Centros</a></p>
             </div>
             </div>
         </div>
