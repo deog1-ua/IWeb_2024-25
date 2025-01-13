@@ -24,6 +24,7 @@ class LoginController extends Controller
                 'fecha_nacimiento' => 'required|date|before:today',
                 'telefono' => 'required|numeric|digits:9',
                 'genero' => 'required|in:hombre,mujer,no binario,prefiero no decirlo',
+                'imagen' => 'file|mimes:jpeg,png,jpg,gif,webp|max:2048',
             ]
         );
 
@@ -50,6 +51,13 @@ class LoginController extends Controller
         $datos_usuario['saldo'] = 0.0;
         $datos_usuario['fecha_alta'] = date('Y-m-d');
         $datos_usuario['direccion_id'] = $direccion->id;
+        if($request->hasFile('imagen')){
+            $datos_usuario['imagen'] = $request->file('imagen')->store('images-profile', 'public');
+        }
+        else {
+            // Asignar imagen predeterminada
+            $datos_usuario['imagen'] = 'images-profile/user-default.jpg';
+        }
 
         // Hash password
         $datos_password['password'] = password_hash($datos_password['password'], PASSWORD_DEFAULT);
@@ -72,8 +80,9 @@ class LoginController extends Controller
         $user = User::where('email', $datos['email'])->first();
         if ($user) {
             
-            $password = Password::where('usuario_id', $user->id)->first();
-            if ($password && password_verify($datos['password'], $password->password)) {
+            //$password = Password::where('usuario_id', $user->id)->latest();
+            $password = $user->password;
+            if ($password && password_verify($datos['password'], $password)) {
                 if ($user->activo) {
                     auth()->login($user);
                     return view('dashboard', ['user' => $user]);

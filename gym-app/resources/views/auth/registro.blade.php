@@ -2,12 +2,22 @@
 
 @section('content')
 <div class="container">
+    @if ($errors->any())
+        <div class="alert alert-danger text-danger text-danger-emphasis alert-dismissible fade show mt-2" role="alert">
+            <ul class="mb-0" style="list-style: none; padding-left: 0;">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <div class="mt-3">
         <h3>Formulario de inscripción</h3>
     </div>
     <div class="card card-registro bg-light mr-4 p-4 shadow-sm" style="border-radius:10px"> 
         <div class="container-fluid mt-4">
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
                 @csrf
                 <h6 class="mb-0">DATOS PERSONALES</h6>
                 <hr class="my-4 mt-0">
@@ -129,7 +139,7 @@
                     <!-- Campo Dirección-->
                     <div class="col-md-9">
                         <label for="direccion_envio" class="col-form-label">Dirección</label>
-                        <input id="direccion_envio" placeholder="Dirección de Envío" type="text" 
+                        <input id="direccion_envio" placeholder="Dirección" type="text" 
                             class="form-control @error('direccion_envio') is-invalid @enderror" 
                             name="direccion_envio" value="{{ old('direccion_envio') }}" 
                             required autocomplete="direccion_envio">
@@ -197,10 +207,25 @@
                 <!-- Campos de Cuenta -->
                 <h6 class="mb-0 mt-5">DATOS DE LA CUENTA</h6>
                 <hr class="my-4 mt-0">
-                <!-- Campos de Datos de la Cuenta -->
-                <div class="row mb-3">
+
+                <!-- Imagen y Nombre de Usuario en la misma línea -->
+                <div class="row align-items-center mb-4">
+                    <!-- Foto de Perfil -->
+                    <div class="col-md-6 d-flex align-items-center">
+                        <div class="me-3 text-center">
+                            <img src="/storage/{{ $user->imagen ?? '/images-profile/user-default.jpg' }}" 
+                                alt="Foto de Perfil" 
+                                style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
+                        </div>
+                        <div>
+                            <label for="foto_perfil" class="col-form-label">Foto de perfil</label>
+                            <span class="badge text-bg-light">(opcional)</span>
+                            <input type="file" id="foto_perfil" name="imagen" class="form-control mt-2">
+                        </div>
+                    </div>
+                    
                     <!-- Campo Nombre de Usuario -->
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label for="nombre_usuario" class="col-form-label">Nombre de Usuario</label>
                         <input id="nombre_usuario" placeholder="Nombre de Usuario" type="text" 
                             class="form-control @error('nombre_usuario') is-invalid @enderror" 
@@ -212,9 +237,13 @@
                             </span>
                         @enderror
                     </div>
+                </div>
 
+
+                <!-- Otros Campos de Datos de la Cuenta -->
+                <div class="row mb-3">
                     <!-- Campo Correo Electrónico -->
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label for="email" class="col-form-label">Correo Electrónico</label>
                         <input id="email" placeholder="Email" type="email" 
                             class="form-control @error('email') is-invalid @enderror" 
@@ -228,7 +257,7 @@
                     </div>
 
                     <!-- Campo Contraseña -->
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label for="password" class="col-form-label">Contraseña</label>
                         <input id="password" placeholder="Contraseña" type="password" 
                             class="form-control @error('password') is-invalid @enderror" 
@@ -240,6 +269,7 @@
                         @enderror
                     </div>
                 </div>
+
 
                 <!-- Botón de Solicitud -->
                 <div class="row justify-content-center">
