@@ -69,6 +69,12 @@ class User extends Authenticatable
 
     public function password()
     {
+        //Retorna la última contraseña del usuario
+        return $this->hasOne(Password::class)->latest();
+    }
+
+    public function passwords()
+    {
         return $this->hasMany(Password::class);
     }
 
