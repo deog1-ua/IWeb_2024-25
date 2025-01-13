@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(DireccionesTableSeeder::class);
         // Mostramos información por consola 
-        $this->command->info('Usuarios table seeded!');
+        $this->command->info('Direcciones table seeded!');
 
         $this->call(UsuariosTableSeeder::class);
         // Mostramos información por consola 
@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UsuariosPasswordsTableSeeder::class);
         // Mostramos información por consola 
-        $this->command->info('Usuarios table seeded!');
+        $this->command->info('UsuariosPasswords table seeded!');
 
         $this->call(ActividadSeeder::class);
         // Mostramos información por consola
