@@ -15,24 +15,18 @@ Route::get('/contacto', function () {
 use App\Http\Controllers\CrearActividadController;
 use App\Http\Controllers\HorarioController;
 
-// Ruta para mostrar el formulario
-Route::get('/actividades/create', [CrearActividadController::class, 'create'])->name('actividades.create');
-
-// Ruta para almacenar la actividad
-Route::post('/actividades', [CrearActividadController::class, 'store'])->name('actividades.store');
-
-// Ruta para listar las actividades
-Route::get('/actividades', [CrearActividadController::class, 'index'])->name('actividades.index');
-
-Route::get('/actividades/{id}', [CrearActividadController::class, 'show'])->name('actividades.show');
+Route::middleware(['role:admin,monitor'])->group(function () {
+    Route::get('/actividades/create', [CrearActividadController::class, 'create'])->name('actividades.create');
+    Route::post('/actividades', [CrearActividadController::class, 'store'])->name('actividades.store');
+    Route::get('/actividades/{id}/edit', [CrearActividadController::class, 'edit'])->name('actividades.edit');
+    Route::put('/actividades/{id}', [CrearActividadController::class, 'update'])->name('actividades.update');
+    Route::delete('/actividades/{id}', [CrearActividadController::class, 'destroy'])->name('actividades.destroy');
+    Route::get('/actividades', [CrearActividadController::class, 'index'])->name('actividades.index');
+    Route::get('/actividades/{id}', [CrearActividadController::class, 'show'])->name('actividades.show');
+});
 
 // Ruta para obtener horarios por fecha
 Route::get('/horarios-por-fecha', [HorarioController::class, 'getHorariosPorFecha']);
-
-Route::get('/actividades/{id}/edit', [CrearActividadController::class, 'edit'])->name('actividades.edit');
-Route::put('/actividades/{id}', [CrearActividadController::class, 'update'])->name('actividades.update');
-
-Route::delete('/actividades/{id}', [CrearActividadController::class, 'destroy'])->name('actividades.destroy');
 
 Route::get('/login', function () {
     return view('auth.login');

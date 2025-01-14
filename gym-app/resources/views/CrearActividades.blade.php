@@ -41,15 +41,22 @@
                             </select>
                         </div>
 
-                        <!-- Monitor -->
+                       <!-- Monitor -->
                         <div class="mb-3">
+                        @if(auth()->user()->tipo_usuario === 'monitor')
+                            <input type="hidden" name="id_monitor" value="{{ auth()->user()->id }}">
+                            <p><strong>Monitor:</strong> {{ auth()->user()->nombre }} {{ auth()->user()->apellidos }}</p>
+                        @else
                             <label for="id_monitor" class="form-label">Monitor</label>
                             <select class="form-select" id="id_monitor" name="id_monitor" required>
-                                <option selected disabled>Selecciona un monitor</option>
+                                <option value="" selected disabled>Selecciona un monitor</option>
                                 @foreach ($monitores as $monitor)
-                                    <option value="{{ $monitor->id }}">{{ $monitor->nombre }} {{ $monitor->apellidos }}</option>
+                                    <option value="{{ $monitor->id }}">
+                                        {{ $monitor->nombre }} {{ $monitor->apellidos }}
+                                    </option>
                                 @endforeach
                             </select>
+                        @endif
                         </div>
 
                         <!-- Imagen -->

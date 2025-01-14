@@ -42,6 +42,13 @@
                     @endforeach
                 </ul>
             @endif
+
+             <!-- Botón para ir a la página de crear actividades -->
+             <div class="mt-4 text-center">
+                <a href="{{ route('actividades.create') }}" class="btn btn-danger">
+                    <i class="fas fa-plus"></i> Crear Nueva Actividad
+                </a>
+            </div>
         </div>
     </div>
 </div>

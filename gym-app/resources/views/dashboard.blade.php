@@ -26,6 +26,7 @@
                 <div class="d-flex flex-wrap justify-content-center">
                     <a href="#" class="btn btn-outline-danger m-2">Mi Calendario</a>
                     <a href="{{ url('/perfil') }}" class="btn btn-outline-danger m-2">Mi Perfil</a>
+                    <a href="{{ route('actividades.index') }}" class="btn btn-outline-danger m-2">Mis Actividades</a>
                 </div>
             </div>
         </div>
@@ -39,6 +40,7 @@
                 <div class="d-flex flex-wrap justify-content-center">
                     <a href="#" class="btn btn-outline-danger m-2">Usuarios</a>
                     <a href="{{ url('/perfil') }}" class="btn btn-outline-danger m-2">Mi Perfil</a>
+                    <a href="{{ route('actividades.index') }}" class="btn btn-outline-danger m-2">Gestionar Actividades</a>
                 </div>
             </div>
         </div>
