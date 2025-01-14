@@ -1,0 +1,113 @@
+.card-perfil{
+    h6 {
+        color: #6c757d;
+    }
+
+    a {
+        background-color: #B70F0A;
+        color: #f8fafc;
+        border: 1px solid #B70F0A;
+        &:hover {
+            border: 1px solid #B70F0A;
+            background-color: #f8fafc;
+            color: #B70F0A;
+        }
+    }
+}
+
+.card-modificar-perfil {
+    h6 {
+        color: #6c757d;
+    }
+
+    a {
+        color: #B70F0A;
+        text-decoration: underline;
+        text-decoration-color: #B70F0A;
+        background-color: #f8fafc;
+        &:hover {
+            background-color: #f8fafc;
+            color: #212529;
+        }
+    }
+
+    button {
+        margin-top: 1em;
+        background-color: #B70F0A;
+        color: #f8fafc;
+        border: 1px solid #B70F0A;
+        &:hover {
+            background-color: #f8fafc;
+            color: #B70F0A;
+        }
+    }
+}
+
+.card-dar-baja {
+
+    h3 {
+        color: #B70F0A;
+    }
+
+    a {
+        margin-top: 1em;
+        background-color: #B70F0A;
+        color: #f8fafc;
+        border: 1px solid #B70F0A;
+        &:hover {
+            background-color: #f8fafc;
+            color: #B70F0A;
+        }
+    }
+
+    button {
+        margin-top: 1em;
+        background-color: #B70F0A;
+        color: #f8fafc;
+        border: 1px solid #B70F0A;
+        &:hover {
+            background-color: #f8fafc;
+            color: #B70F0A;
+        }
+    }
+}
+
+.card-password {
+    border-radius: 10px; 
+    padding: 20px;
+    max-width: 500px; // Limita el ancho máximo
+    margin: 0 auto; // Centra horizontalmente
+    margin-bottom: 2em; // Margen superior
+
+    .alert {
+        max-width: 100%; // Asegura que se ajuste al tamaño de la tarjeta
+    }
+
+    h3 {
+        color: #B70F0A;
+    }
+
+    .button-password {
+        margin-top: 1em;
+        background-color: #B70F0A;
+        color: #f8fafc;
+        border: 1px solid #B70F0A;
+        &:hover {
+            background-color: #f8fafc;
+            border: 1px solid #B70F0A;
+            color: #B70F0A;
+        }
+    }
+
+    a {
+        color: #B70F0A;
+        text-decoration: underline;
+        text-decoration-color: #B70F0A;
+        background-color: #f8fafc;
+        &:hover {
+            background-color: #f8fafc;
+            color: #212529;
+        }
+    }
+}
+
