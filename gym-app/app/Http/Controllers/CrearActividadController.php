@@ -176,4 +176,11 @@ class CrearActividadController extends Controller
     }
 
 
+
+    public function showpublico($id)
+    {
+        $actividad = Actividad::with('user', 'horario')->findOrFail($id);
+
+        return view('mostrar.mostrarActividad', compact('actividad'));
+    }
 }

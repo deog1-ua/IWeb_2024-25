@@ -1,20 +1,30 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\CrearActividadController;
 use App\Http\Controllers\HorarioController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\ReservasController;
+use App\Http\Controllers\ActividadController;
 
 Route::get('/', function () {
     return view('home');
 });
 
+
+Route::get('/sobre-nosotros', function () {
+    return view('sobre_nosotros');
+});
 Route::get('/contacto', function () {
     return view('contacto'); // El nombre de tu vista Blade
 })->name('contacto');
 
-Route::middleware(['role:admin, monitor'])->group(function () {
+Route::get('/actividades-publico', [ActividadController::class, 'listActividades']);
+
+Route::get('/actividades-publico/{id}', [ActividadController::class, 'show']);
+
+Route::middleware(['role:admin,monitor'])->group(function () {
     Route::get('/actividades/create', [CrearActividadController::class, 'create'])->name('actividades.create');
     Route::post('/actividades', [CrearActividadController::class, 'store'])->name('actividades.store');
     Route::get('/actividades/{id}/edit', [CrearActividadController::class, 'edit'])->name('actividades.edit');
@@ -24,10 +34,14 @@ Route::middleware(['role:admin, monitor'])->group(function () {
     Route::get('/actividades/{id}', [CrearActividadController::class, 'show'])->name('actividades.show');
 });
 
+
 Route::middleware(['role:admin'])->group(function () {
     Route::get('/horarios/create', [HorarioController::class, 'create'])->name('horarios.create');
     Route::post('/horarios', [HorarioController::class, 'store'])->name('horarios.store');
 });
+
+Route::get('/actividades/publico/{id}', [CrearActividadController::class, 'showpublico'])->name('actividades.showpublico');
+
 
 // Ruta para obtener horarios por fecha
 Route::get('/horarios-por-fecha', [HorarioController::class, 'getHorariosPorFecha']);
@@ -44,14 +58,29 @@ Route::post('/logout', function () {
 Route::get('/registro', function () {
     return view('auth.registro');
 });
+
+
 Route::post('/registro', [LoginController::class, 'registro']);
 
 Route::middleware(['role:admin'])->group(function () {
     // Poner aquí las rutas que solo puede ver el administrador
+    Route::get('/listado-reservas', [ReservasController::class, 'listReservas']);
 });
 
 Route::middleware(['role:admin,monitor'])->group(function () {
     // Poner aquí las rutas que solo pueden ver el administrador y el monitor
+});
+
+Route::middleware(['role:socio'])->group(function () {
+    // Poner aquí las rutas que solo puede ver el socio
+    Route::get('/mis-reservas', [ReservasController::class, 'listReservasByUser'])->name('mis-reservas');
+    Route::get('/mis-reservas/cancelar/{id}', [ReservasController::class, 'deleteReserva'])->name('cancelar');
+    Route::post('/reservar', [ReservasController::class, 'reservar'])->name('reservar');
+});
+
+Route::middleware(['role:monitor'])->group(function () {
+    // Poner aquí las rutas que pueden ver el administrador, el monitor y el socio
+    Route::get('/mis-actividades', [ActividadController::class, 'listbyMonitor']);
 });
 
 Route::middleware(['role:admin,monitor,socio'])->group(function () {

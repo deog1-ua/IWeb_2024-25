@@ -31,7 +31,6 @@ return new class extends Migration
             $table->float('saldo');
             $table->string('imagen')->nullable();
             $table->foreignId('direccion_id')->constrained('direcciones')->onDelete('cascade');
-            
             $table->rememberToken();
             $table->timestamps();
         });

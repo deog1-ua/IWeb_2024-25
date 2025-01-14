@@ -24,7 +24,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Servicios</a>
+                <a class="nav-link" href="/actividades-publico">Servicios</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Centros</a>
@@ -36,7 +36,7 @@
                 <a class="nav-link" href="{{ route('contacto') }}">Contacto</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Sobre Nosotros</a>
+                <a class="nav-link" href="/sobre-nosotros">Sobre Nosotros</a>
             </li>
         </ul>
         <!-- Right Side Of Navbar -->
@@ -75,6 +75,9 @@
                             @if (Auth::user()->tipo_usuario == "monitor")
                                 <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
                                     Mi Calendario
+                                </a>
+                                <a class="dropdown-item" href="/mis-actividades" style="margin-bottom: 10px;">
+                                    Mis Actividades
                                 </a>
                             @endif
 
