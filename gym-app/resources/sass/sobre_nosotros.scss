@@ -1,0 +1,293 @@
+.titulo1 {
+	color: #444444;
+	font-weight: 700;
+	font-size: 25px;
+	line-height: 1.28;
+	text-align: left;
+	margin: 30px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.titulo2 {
+	color: #444444;
+	font-weight: 700;
+	font-size: 25px;
+	line-height: 1.28;
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+
+.imagen-fondo{
+    position: relative;
+    padding: 4em 0em;
+    text-align: center;
+    background-attachment: fixed;
+    z-index: 1; 
+	color:#fff;
+	&:before { //oscurece la imagen de fondo
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+		z-index: -1;
+	}
+    h2 {
+        font-size: 2rem;
+        color: #f8fafc;
+    }
+}
+
+
+.imagen-fondo-claro {
+    position: relative;
+    padding: 8em 0em; /* Aumentar el padding superior e inferior */
+    text-align: center;
+    background-attachment: fixed;
+    z-index: 1; 
+
+    &:before { 
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.2); /* Blanco con menor transparencia */
+        z-index: -1;
+    }
+
+    h2 {
+        font-size: 2rem;
+        color: black;
+    }
+}
+
+
+
+.sobre-nosotros{
+		color: #3B4754;
+		font-weight: 700;
+		font-size: 28px;
+		line-height: 1.2;
+		text-align: center;
+		margin: 40px;
+}
+
+.parrafo1{
+	width: 550px;
+	height: 150px;
+	color: #798DA3;
+	font-family: "Open Sans";
+	line-height: 1.5;
+	text-align: left;
+	font-size: 16.5px;
+}
+
+.derecha{
+	float: right;
+	margin-right:60px;
+}
+
+.izquierda{
+	float: left;
+	margin-left:60px;
+}
+
+.contenido::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.parrafo2{
+		color: #798DA3;
+		font-family: "Open Sans";
+		line-height: 1.5;
+		text-align: center;
+		font-size: 17px;
+}
+
+.step-container {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.step {
+	text-align: center;
+	position: relative;
+	flex: 1;
+	padding: 10px; /* Añade un poco de espacio */
+}
+
+.circle {
+	width: 60px; /* Círculo más grande */
+	height: 60px;
+	border-radius: 50%;
+	background-color: #f0f0f0; /* Gris claro */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	font-size: 22px; /* Número más grande */
+	color: red; /* Número en rojo */
+	font-weight: bold;
+	border: 2px solid #dcdcdc;
+}
+
+.line {
+	position: absolute;
+	top: 30px; /* Ajustado al tamaño del círculo */
+	left: 0;
+	right: 0;
+	height: 2px;
+	background-color: #dcdcdc; /* Línea gris */
+	z-index: -1;
+}
+
+.step:first-child .line {
+	left: 50%; /* No dibuja la línea antes del primer paso */
+}
+
+.step:last-child .line {
+	right: 50%; /* No dibuja la línea después del último paso */
+}
+
+.step-title {
+	margin-top: 15px; /* Más espacio debajo del círculo */
+	font-weight: bold;
+	font-size: 16px; /* Título más pequeño */
+}
+
+.step-text {
+	margin-top: 10px; /* Más espacio debajo del título */
+	font-size: 14px;
+	color: #666; /* Texto en gris */
+	line-height: 1.5; /* Mejor legibilidad */
+}
+
+.step-texto{//comprime mas el texto
+	margin-top: 20px; /* Más espacio debajo del título */
+	font-size: 14px;
+	color: #666; /* Texto en gris */
+	line-height: 1.5; /* Mejor legibilidad */
+}
+
+.mision{
+	margin-top: 60px;
+	margin-left: 40px;
+	margin-right: 40px;
+}
+
+.imagen-entrenador{
+	width: 80px;
+	height: 80px;
+	background: #00000000;
+	border-color: #C9D3DD;
+	border-width: 0.5px;
+	border-style: solid;
+	border-radius: 40px 40px 40px 40px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas se ajusten en múltiples filas */
+}
+
+.col-md-4 {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 calc(33.333% - 20px); /* Cada tarjeta ocupa un tercio del ancho con espacio */
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+.tarjeta {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Asegura que los elementos dentro de la tarjeta estén separados */
+    align-items: center;
+    height: 420px; /* Asegura que todas las tarjetas tengan la misma altura */
+    padding: 20px;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.text-trainer p {
+    padding: 0 20px;
+    color: #798DA3;
+    font-family: "Open Sans";
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.text-trainer h4 {
+    color: #3B4754;
+    font-weight: 700;
+    line-height: 1.1;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.imagen-entrenador {
+    width: 80px;
+    height: 80px;
+    background: #00000000;
+    border-color: #C9D3DD;
+    border-width: 0.5px;
+    border-style: solid;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.abajo {
+    padding-top: 20px;
+    border-top: 1px solid #D8E0E8;
+    width: 100%;
+}
+
+.accordion-button {
+	background-color: #B70F0A !important;
+	color: white !important;
+	border:none;
+	font-size: 1.2rem;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+/* Estilo del ícono */
+.accordion-button .toggle-icon {
+	font-size: 1.5rem;
+}
+/* Cambiar ícono según estado (colapsado o expandido) */
+.accordion-button.collapsed .toggle-icon {
+	content: '+';
+}
+.accordion-button:not(.collapsed) .toggle-icon {
+	content: '-';
+}
+/* Quitar bordes del acordeón */
+.accordion-item {
+	border: none;
+}
+.accordion-body {
+    border-top: 1px solid #ddd;
+    padding: 50px; /* Añade espacio interno */
+}
+
+.preguntas{
+	margin-bottom: 60px;
+}
+
+
+.imagen-actividad{
+	width: 120px;
+	height: 80px;
+}

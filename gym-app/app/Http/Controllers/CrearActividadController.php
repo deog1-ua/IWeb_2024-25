@@ -155,7 +155,6 @@ class CrearActividadController extends Controller
         return view('actividadshow', compact('actividad'));
     }
 
-
     // public function edit($id)
     // {
     //     $actividad = Actividad::with('user', 'horario')->findOrFail($id);
@@ -253,4 +252,11 @@ class CrearActividadController extends Controller
     }
 
 
+
+    public function showpublico($id)
+    {
+        $actividad = Actividad::with('user', 'horario')->findOrFail($id);
+
+        return view('mostrar.mostrarActividad', compact('actividad'));
+    }
 }

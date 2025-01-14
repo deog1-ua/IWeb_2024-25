@@ -32,7 +32,7 @@ class Actividad extends Model
 
     public function actividad_socio() {
         
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'actividad_usuario', 'actividad_id', 'usuario_id');
     }
 
     public function horario() {

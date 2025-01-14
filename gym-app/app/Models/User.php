@@ -95,7 +95,7 @@ class User extends Authenticatable
 
     public function actividad_socio() {
 
-        return $this->belongsToMany(Actividad::class);
+        return $this->belongsToMany(Actividad::class, 'actividad_usuario', 'usuario_id', 'actividad_id');
     }
 
     public function reserva()

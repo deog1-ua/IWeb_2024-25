@@ -43,7 +43,7 @@ class Horario extends Model
 
     public function actividad() {
         
-        return $this->belongsTo(Actividad::class);
+        return $this->belongsTo(Actividad::class, 'actividad_id');
     }
 
 }
