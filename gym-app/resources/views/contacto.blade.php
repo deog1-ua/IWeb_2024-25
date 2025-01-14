@@ -7,7 +7,7 @@
     <div class="position-relative hero-header">
         <img src="{{ asset('images/gym-banner.png') }}" class="d-block w-100 gym-banner" alt="Imagen del gimnasio">
         <div class="carousel-caption d-flex flex-column justify-content-center align-items-center text-white text-center">
-            <h1 class="display-4 fw-bold">Cóntactanos</h1>
+            <h1 class="display-4 fw-bold">Contáctanos</h1>
             <p class="lead">¿Tienes preguntas sobre nuestras clases o instalaciones? Llámanos, envíanos un mensaje o visítanos en uno de nuestros centros.</p>
         </div>
     </div>

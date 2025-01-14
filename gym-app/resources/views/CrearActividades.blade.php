@@ -22,7 +22,11 @@
                             <label for="descripcion" class="form-label">Descripción</label>
                             <textarea class="form-control" id="descripcion" name="descripcion" rows="4" placeholder="Describe la actividad" required></textarea>
                         </div>
-
+                        
+                        <div class="mb-3">
+                            <label for="importe" class="form-label">Importe (€)</label>
+                            <input type="number" step="0.01" class="form-control" id="importe" name="importe" placeholder="Introduce el importe de la actividad" required>
+                        </div>
                         <!-- Fecha -->
                         <div class="mb-3">
                             <label for="fecha" class="form-label">Fecha</label>
@@ -37,7 +41,7 @@
                             </select>
                         </div>
 
-                       <!-- Monitor -->
+                        <!-- Monitor -->
                         <div class="mb-3">
                             <label for="id_monitor" class="form-label">Monitor</label>
                             <select class="form-select" id="id_monitor" name="id_monitor" required>
