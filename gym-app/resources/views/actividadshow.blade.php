@@ -10,7 +10,7 @@
                 </div>
                 <div class="card-body">
                     <!-- Imagen -->
-                    <div class="text-center mb-4">
+                    <div class="d-flex justify-content-center mb-4">
                         <img src="{{ asset('storage/images/' . $actividad->imagen) }}" alt="Imagen de {{ $actividad->nombre }}" class="rounded" style="width: 200px; height: 200px; object-fit: cover;">
                     </div>
 
@@ -26,7 +26,7 @@
                         <ul class="list-group">
                             @foreach($actividad->horario as $horario)
                                 <li class="list-group-item">
-                                    <strong>Fecha:</strong> {{ $horario->fecha }} <br>
+                                    <strong>Fecha:</strong> {{ $horario->fecha->format('Y-m-d') }} <br>
                                     <strong>Hora:</strong> {{ $horario->hora_inicio }} - {{ $horario->hora_fin }} <br>
                                     <strong>Sala:</strong> {{ $horario->sala }} <br>
                                     <strong>Aforo:</strong> {{ $horario->aforo }}
@@ -37,9 +37,20 @@
                         <p class="text-muted">No hay horarios asignados a esta actividad.</p>
                     @endif
 
-                    <!-- Botón de Volver -->
                     <div class="mt-4 text-center">
-                        <a href="{{ route('actividades.index') }}" class="btn btn-secondary">Volver al Listado</a>
+                        <a href="{{ route('actividades.index') }}" class="btn btn-secondary me-2">
+                            <i class="fas fa-bars"></i> Volver al Listado
+                        </a>
+                        <form action="{{ route('actividades.destroy', $actividad->id) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger me-2">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </button>
+                        </form>
+                        <a href="{{ route('actividades.edit', $actividad->id) }}" class="btn btn-primary">
+                            <i class="fas fa-pencil-alt"></i> Editar
+                        </a>
                     </div>
                 </div>
             </div>

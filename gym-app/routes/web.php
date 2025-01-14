@@ -29,6 +29,11 @@ Route::get('/actividades/{id}', [CrearActividadController::class, 'show'])->name
 // Ruta para obtener horarios por fecha
 Route::get('/horarios-por-fecha', [HorarioController::class, 'getHorariosPorFecha']);
 
+Route::get('/actividades/{id}/edit', [CrearActividadController::class, 'edit'])->name('actividades.edit');
+Route::put('/actividades/{id}', [CrearActividadController::class, 'update'])->name('actividades.update');
+
+Route::delete('/actividades/{id}', [CrearActividadController::class, 'destroy'])->name('actividades.destroy');
+
 Route::get('/login', function () {
     return view('auth.login');
 });

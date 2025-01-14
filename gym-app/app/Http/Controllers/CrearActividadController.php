@@ -71,4 +71,73 @@ class CrearActividadController extends Controller
 
         return view('actividadshow', compact('actividad'));
     }
+
+    public function edit($id)
+    {
+        $actividad = Actividad::with('user', 'horario')->findOrFail($id);
+        $monitores = User::where('tipo_usuario', 'monitor')->get();
+        
+        // Cargar horarios disponibles (aquellos que no tienen actividad asignada o tienen la actividad actual)
+        $horarios = Horario::whereNull('actividad_id')
+            ->orWhere('actividad_id', $actividad->id)
+            ->get();
+    
+        return view('actividadedit', compact('actividad', 'monitores', 'horarios'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $actividad = Actividad::findOrFail($id);
+    
+        $request->validate([
+            'nombre' => 'required|unique:actividades,nombre,' . $actividad->id,
+            'descripcion' => 'required',
+            'importe' => 'required|numeric',
+            'id_monitor' => 'required|exists:usuarios,id',
+            'id_horario' => 'nullable|exists:horarios,id',
+            'imagen' => 'nullable|image|max:2048',
+        ]);
+
+        if ($request->hasFile('imagen')) {
+            $file = $request->file('imagen');
+            $filename = $file->getClientOriginalName(); // Obtiene el nombre original
+            $path = $file->storeAs('public/images', $filename); // Guarda con el nombre original
+            $actividad->imagen = $filename; // Actualiza solo el nombre en la base de datos
+        }
+    
+
+        // Actualiza los datos principales de la actividad
+        $actividad->update([
+            'nombre' => $request->nombre,
+            'descripcion' => $request->descripcion,
+            'importe' => $request->importe,
+            'usuario_id' => $request->id_monitor,
+        ]);
+
+        // Manejo del horario
+        if ($request->id_horario) {
+            // Limpia el horario anterior de la actividad
+            Horario::where('actividad_id', $actividad->id)->update(['actividad_id' => null]);
+
+            // Asigna el nuevo horario
+            Horario::where('id', $request->id_horario)->update(['actividad_id' => $actividad->id]);
+        }
+
+        return redirect()->route('actividades.index')->with('success', 'Actividad actualizada correctamente');
+    }  
+    
+        public function destroy($id)
+    {
+        $actividad = Actividad::findOrFail($id);
+
+        // Liberar los horarios asociados
+        Horario::where('actividad_id', $actividad->id)->update(['actividad_id' => null]);
+
+        // Eliminar la actividad
+        $actividad->delete();
+
+        return redirect()->route('actividades.index')->with('success', 'Actividad eliminada correctamente');
+    }
+
+
 }
