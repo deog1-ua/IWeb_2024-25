@@ -25,7 +25,7 @@ class HorarioSeeder extends Seeder
                 [
                     'hora_inicio' => '10:00:00',
                     'hora_fin' => '11:00:00',
-                    'fecha' => '2021-12-01',
+                    'fecha' => '2025-02-01',
                     'sala' => 'Sala 1',
                     'aforo' => 20,
                     'actividad_id' => 1,
@@ -33,7 +33,7 @@ class HorarioSeeder extends Seeder
                 [
                     'hora_inicio' => '11:00:00',
                     'hora_fin' => '12:00:00',
-                    'fecha' => '2021-12-01',
+                    'fecha' => '2025-12-01',
                     'sala' => 'Sala 2',
                     'aforo' => 20,
                     'actividad_id' => 1,
@@ -41,7 +41,7 @@ class HorarioSeeder extends Seeder
                 [
                     'hora_inicio' => '12:00:00',
                     'hora_fin' => '13:00:00',
-                    'fecha' => '2021-12-01',
+                    'fecha' => '2025-10-01',
                     'sala' => 'Sala 3',
                     'aforo' => 20,
                     'actividad_id' => 2,
@@ -49,7 +49,7 @@ class HorarioSeeder extends Seeder
                 [
                     'hora_inicio' => '13:00:00',
                     'hora_fin' => '14:00:00',
-                    'fecha' => '2021-12-01',
+                    'fecha' => '2025-02-01',
                     'sala' => 'Sala 4',
                     'aforo' => 20,
                     'actividad_id' => 2,

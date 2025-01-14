@@ -8,13 +8,13 @@
             @foreach($actividades as $index => $actividad)
                 <div class="col-md-3 mb-4">
                     <div class="card h-100 d-flex flex-column">
-                        <img src="{{ $actividad->imagen }}" class="card-img-top" alt="{{ $actividad->nombre }}">
+                        <img src="{{asset('storage/images/' . $actividad->imagen) }}" class="card-img-top" alt="{{ $actividad->nombre }}">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title text-center">{{ $actividad->nombre }}</h5>
                             <p class="card-text text-center">{{ $actividad->descripcion }}</p>
                             <p class="card-text text-center">Con: {{ $actividad->user->nombre }} {{$actividad->user->apellidos}}</p>
                             <div class="mt-auto d-flex justify-content-center">
-                                <a href="/actividades/turnos/{{ $actividad->id }}" class="btn btn-primary btn-block">Ver turnos</a>
+                                <a href="/actividades/{{ $actividad->id }}" class="btn btn-primary btn-block">Detalles</a>
                             </div>
                         </div>
                     </div>
