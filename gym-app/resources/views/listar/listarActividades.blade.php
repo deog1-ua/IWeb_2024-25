@@ -30,7 +30,7 @@
                         <p class="card-text text-center">Con: {{ $actividad->user->nombre }} {{$actividad->user->apellidos}}</p>
                         <!-- Botón centrado y agrandado -->
                         <div class="mt-auto d-flex justify-content-center">
-                            <a href="{{ route('actividades.showpublico', $actividad->id) }}" class="btn btn-primary btn-lg w-75">Ver más</a>
+                            <a href="{{ route('actividades.showpublico', $actividad->id) }}" class="btn btn-danger btn-lg w-75">Ver más</a>
                         </div>
                     </div>
                 </div>

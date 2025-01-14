@@ -33,7 +33,7 @@
             <div class="carousel-caption text-start">
                 <h1>Actividades</h1>
                 <p>Encuentra tu actividad ideal para empezar un nuevo reto.</p>
-                <p><a class="btn btn-lg btn-danger" href="#">Ver Actividades</a></p>
+                <p><a class="btn btn-lg btn-danger" href="/actividades-publico">Ver Actividades</a></p>
             </div>
             </div>
         </div>
@@ -68,7 +68,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Crossfit</h5>
                         <p class="card-text">Entrenamiento de alta intensidad que combina ejercicios de varias disciplinas, como levantamiento de pesas, etc.</p>
-                        <a href="/actividades/publico/4" class="btn btn-primary">Saber más</a>
+                        <a href="/actividades/publico/4" class="btn btn-danger">Saber más</a>
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Zumba</h5>
                         <p class="card-text">Actividad dinámica que combina baile y ejercicio al ritmo de música latina para quemar calorías mientras te diviertes.</p>
-                        <a href="/actividades/publico/1" class="btn btn-primary">Saber más</a>
+                        <a href="/actividades/publico/1" class="btn btn-danger">Saber más</a>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Pilates</h5>
                         <p class="card-text">Entrenamiento que fortalece el cuerpo, mejora la postura y aumenta la flexibilidad a través de movimientos controlados.</p>
-                        <a href="/actividades/publico/2" class="btn btn-primary">Saber más</a>
+                        <a href="/actividades/publico/2" class="btn btn-danger">Saber más</a>
                     </div>
                 </div>
             </div>
@@ -98,12 +98,12 @@
                     <div class="card-body">
                         <h5 class="card-title">Spinning</h5>
                         <p class="card-text">Clase de ciclismo indoor de alta intensidad que mejora la resistencia cardiovascular y quema calorías. Resistencia, intensidad, cardio, motivación.</p>
-                        <a href="/actividades/publico/3" class="btn btn-primary">Saber más</a>
+                        <a href="/actividades/publico/3" class="btn btn-danger">Saber más</a>
                     </div>
                 </div>
             </div>
-            <div class="design-button">
-                <a class="btn btn-primary " href="#">Ver más</a>
+            <div class="">
+                <a class="btn btn-danger design-button-a" href="/actividades-publico">Ver más</a>
             </div>
         </div>
     </div>
@@ -130,7 +130,11 @@
                         </ul>
 
                         <div class="d-grid gap-2">
-                            <button class="btn btn-dark btn-lg card-basic" type="button" style="">Elegir plan</button>
+                            @guest
+                                <a href="/login" class="btn btn-dark btn-lg card-basic">Elegir plan</a>
+                            @else
+                                <a href="#" class="btn btn-dark btn-lg card-basic">Elegir plan</a>
+                            @endguest
                         </div>
                     </div>
                 </div>
@@ -151,7 +155,11 @@
                         </ul>
 
                         <div class="d-grid gap-2">
-                            <button class="btn btn-dark btn-lg card-standard" type="button" style="">Elegir plan</button>
+                            @guest
+                                <a href="/login" class="btn btn-dark btn-lg card-standard">Elegir plan</a>
+                            @else
+                                <a href="#" class="btn btn-dark btn-lg card-standard">Elegir plan</a>
+                            @endguest
                         </div>
                     </div>
                 </div>
@@ -172,7 +180,11 @@
                         </ul>
 
                         <div class="d-grid gap-2">
-                            <button class="btn btn-dark btn-lg card-premium" type="button" style="">Elegir plan</button>
+                            @guest
+                                <a href="/login" class="btn btn-dark btn-lg card-premium">Elegir plan</a>
+                            @else
+                                <a href="#" class="btn btn-dark btn-lg card-premium">Elegir plan</a>
+                            @endguest
                         </div>
                     </div>
                 </div>

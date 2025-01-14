@@ -58,7 +58,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Preguntas frecuentes</h5>
                     <p class="card-text">Encuentra respuestas rápidas a tus dudas más comunes en esta sección.</p>
-                    <a href="#" class="btn btn-danger">Ver más</a>
+                    <a href="/sobre-nosotros" class="btn btn-danger">Ver más</a>
                 </div>
             </div>
         </div>

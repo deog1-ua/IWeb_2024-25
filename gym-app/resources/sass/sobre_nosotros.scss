@@ -344,3 +344,14 @@
 	width: 120px;
 	height: 80px;
 }
+
+.design-button-a {
+	background-color: #B70F0A;
+	color: #f8fafc;
+	border: 1px solid #B70F0A;
+	&:hover {
+		border: 1px solid #B70F0A;
+		background-color: #f8fafc;
+		color: #B70F0A;
+	}
+}

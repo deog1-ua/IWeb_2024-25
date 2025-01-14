@@ -30,9 +30,6 @@
                 <a class="nav-link" href="#">Centros</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Blog</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="{{ route('contacto') }}">Contacto</a>
             </li>
             <li class="nav-item">
@@ -73,8 +70,8 @@
                             @endguest
                             
                             @if (Auth::user()->tipo_usuario == "monitor")
-                                <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
-                                    Mi Calendario
+                                <a class="dropdown-item" href="/actividades" style="margin-bottom: 10px;">
+                                    Actividades
                                 </a>
                                 <a class="dropdown-item" href="/mis-actividades" style="margin-bottom: 10px;">
                                     Mis Actividades
