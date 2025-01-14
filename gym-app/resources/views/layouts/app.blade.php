@@ -24,13 +24,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Servicios</a>
+                <a class="nav-link" href="/actividades-publico">Servicios</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Centros</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/actividades">Servicios</a>
+                <a class="nav-link" href="#">Blog</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('contacto') }}">Contacto</a>

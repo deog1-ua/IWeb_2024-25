@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1 class="mb-4">Listado de Reservas</h1>
+    <h1 class="titulo1">Listado de Reservas</h1>
 
     @if($reservas->isEmpty())
         <p>No hay reservas disponibles.</p>

@@ -20,4 +20,5 @@ class ActividadController extends Controller
         return view('listar.listarMisActividades', compact('actividades', 'actividad1'));
     }
 
+
 }

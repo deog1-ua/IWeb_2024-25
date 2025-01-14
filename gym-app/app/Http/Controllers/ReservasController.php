@@ -32,11 +32,26 @@ class ReservasController extends Controller
         $reserva = Reserva::find($id);
         if ($reserva) {
             $reserva->delete();
-            return redirect()->route('listar.listarReservas')->with('success', 'Reserva cancelada correctamente');
+
+            return redirect()->back()->with('success', 'Reserva cancelada correctamente');
         }
         else{
-            return redirect()->route('listar.listarReservas')->with('error', 'Reserva no encontrada');
+            return redirect()->back()->with('error', 'Reserva no encontrada');
         }
 
+    }
+
+    public function reservar(Request $request)
+    {
+        $request->validate([
+            'horario_id' => 'required|exists:horarios,id',
+        ]);
+
+        $reserva = Reserva::create([
+            'usuario_id' => auth()->user()->id,
+            'horario_id' => $request->horario_id,
+        ]);
+
+        return redirect()->route('mis-reservas')->with('success', 'Reserva realizada correctamente');
     }
 }

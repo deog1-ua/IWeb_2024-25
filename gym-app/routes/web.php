@@ -22,8 +22,9 @@ Route::get('/contacto', function () {
 })->name('contacto');
 
 
-//Route::get('/actividades', [ActividadController::class, 'listActividades']);
+Route::get('/actividades-publico', [ActividadController::class, 'listActividades']);
 
+Route::get('/actividades-publico/{id}', [ActividadController::class, 'show']);
 
 // Ruta para mostrar el formulario
 Route::get('/actividades/create', [CrearActividadController::class, 'create'])->name('actividades.create');
@@ -35,6 +36,7 @@ Route::post('/actividades', [CrearActividadController::class, 'store'])->name('a
 Route::get('/actividades', [CrearActividadController::class, 'index'])->name('actividades.index');
 
 Route::get('/actividades/{id}', [CrearActividadController::class, 'show'])->name('actividades.show');
+Route::get('/actividades/publico/{id}', [CrearActividadController::class, 'showpublico'])->name('actividades.showpublico');
 
 // Ruta para obtener horarios por fecha
 Route::get('/horarios-por-fecha', [HorarioController::class, 'getHorariosPorFecha']);
@@ -66,8 +68,9 @@ Route::middleware(['role:admin,monitor'])->group(function () {
 
 Route::middleware(['role:socio'])->group(function () {
     // Poner aquí las rutas que solo puede ver el socio
-    Route::get('/mis-reservas', [ReservasController::class, 'listReservasByUser']);
-    Route::get('/mis-reservas/cancelar/{id}', [ReservasController::class, 'deleteReserva']);
+    Route::get('/mis-reservas', [ReservasController::class, 'listReservasByUser'])->name('mis-reservas');
+    Route::get('/mis-reservas/cancelar/{id}', [ReservasController::class, 'deleteReserva'])->name('cancelar');
+    Route::post('/reservar', [ReservasController::class, 'reservar'])->name('reservar');
 });
 
 Route::middleware(['role:monitor'])->group(function () {
