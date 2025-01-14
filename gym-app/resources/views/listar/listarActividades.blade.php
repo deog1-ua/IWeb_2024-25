@@ -4,9 +4,13 @@
 <div>
     <div class="imagen-fondo-claro" style="background: url('{{ asset('images/actividades.png') }}');">
         <h2>Apúntate con nosotros!</h2>
-        <p>Consulta nuestros planes y tarifas </p>
         <div class="design-button">
-        <a href="/" class="btn btn-primary btn-lg">Inscribirme</a>
+            @if(Auth::check())
+                <p>Consulta nuestras actividades y apúntate a la que más te guste</p>
+            @else
+                <p>Consulta nuestros planes y tarifas </p>
+                <a href="/" class="btn btn-primary btn-lg">Inscribirme</a>
+            @endif
         </div>
     </div>
 </div>
@@ -22,7 +26,7 @@
                     <img src="{{asset('storage/images/' . $actividad->imagen) }}" class="card-img-top" alt="{{ $actividad->nombre }}">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title text-center">{{ $actividad->nombre }}</h5>
-                        <p class="card-text text-center">{{ $actividad->descripcion }}</p>
+                        <p class="card-text text-center">{{ \Illuminate\Support\Str::words($actividad->descripcion, 5, '...') }}</p>
                         <p class="card-text text-center">Con: {{ $actividad->user->nombre }} {{$actividad->user->apellidos}}</p>
                         <!-- Botón centrado y agrandado -->
                         <div class="mt-auto d-flex justify-content-center">
