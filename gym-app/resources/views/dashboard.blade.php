@@ -11,7 +11,7 @@
                 <hr class="my-4" style="border: 0.5px solid #ccc;">
                 <div class="d-flex flex-wrap justify-content-center">
                     <a href="{{ url('/') }}" class="btn btn-outline-danger m-2">Inicio</a>
-                    <a href="#" class="btn btn-outline-danger m-2">Mis Reservas</a>
+                    <a href="/mis-reservas" class="btn btn-outline-danger m-2">Mis Reservas</a>
                     <a href="{{ url('/perfil') }}" class="btn btn-outline-danger m-2">Mi Perfil</a>
                 </div>
             </div>

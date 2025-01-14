@@ -66,8 +66,8 @@
                                     <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
                                         Usuarios
                                     </a>
-                                    <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
-                                        Calendarios
+                                    <a class="dropdown-item" href="/listado-reservas" style="margin-bottom: 10px;">
+                                        Reservas
                                     </a>
                                 @endif
                             @endguest
@@ -82,7 +82,7 @@
                             @endif
 
                             @if (Auth::user()->tipo_usuario == "socio")
-                                <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
+                                <a class="dropdown-item" href="/mis-reservas" style="margin-bottom: 10px;">
                                     Mis reservas
                                 </a>
                                 <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
@@ -128,11 +128,11 @@
       <h5>About</h5>
       <ul class="list-unstyled text-small">
         <li><a class="link-secondary" href="/">Inicio</a></li>
-        <li><a class="link-secondary" href="#">Servicios</a></li>
+        <li><a class="link-secondary" href="/actividades-publico">Servicios</a></li>
         <li><a class="link-secondary" href="#">Centros</a></li>
         <li><a class="link-secondary" href="#">Blog</a></li>
         <li><a class="link-secondary" href="#">Contacto</a></li>
-        <li><a class="link-secondary" href="#">Sobre Nosotros</a></li>
+        <li><a class="link-secondary" href="/sobre-nosotros">Sobre Nosotros</a></li>
         
       </ul>
     </div>

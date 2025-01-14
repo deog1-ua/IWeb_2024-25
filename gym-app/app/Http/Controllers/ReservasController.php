@@ -29,7 +29,9 @@ class ReservasController extends Controller
 
     public function deleteReserva($id)
     {
-        $reserva = Reserva::find($id);
+        $reserva = Reserva::where('usuario_id', auth()->user()->id)
+                    ->where('horario_id', $id)
+                    ->first();
         if ($reserva) {
             $reserva->delete();
 
@@ -52,6 +54,6 @@ class ReservasController extends Controller
             'horario_id' => $request->horario_id,
         ]);
 
-        return redirect()->route('mis-reservas')->with('success', 'Reserva realizada correctamente');
+        return redirect()->back()->with('success', 'Reserva realizada correctamente');
     }
 }
