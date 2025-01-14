@@ -35,6 +35,7 @@ class User extends Authenticatable
         'activo',
         'fecha_baja',
         'saldo',
+        'imagen',
         'direccion_id',
     ];
 
@@ -56,9 +57,9 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'fecha_alta' => 'datetime',
-            'fecha_baja' => 'datetime',
-            'fecha_nacimiento' => 'date'
+            //'fecha_alta' => 'datetime',
+            //'fecha_baja' => 'datetime',
+            //'fecha_nacimiento' => 'date'
         ];
     }
 
@@ -67,15 +68,14 @@ class User extends Authenticatable
         return $this->belongsTo(Direccion::class);
     }
 
-    public function password()
+    public function getPasswordAttribute()
     {
-        //Retorna la última contraseña del usuario
-        return $this->hasOne(Password::class)->latest();
+        return $this->passwords()->latest()->first()->password;
     }
 
     public function passwords()
     {
-        return $this->hasMany(Password::class);
+        return $this->hasMany(Password::class, 'usuario_id');
     }
 
     public function token()

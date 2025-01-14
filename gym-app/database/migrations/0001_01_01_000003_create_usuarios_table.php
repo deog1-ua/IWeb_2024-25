@@ -28,9 +28,9 @@ return new class extends Migration
             $table->date('fecha_alta');
             $table->boolean('activo');
             $table->date('fecha_baja')->nullable();
-            $table->float('saldo')->default(0);
+            $table->float('saldo');
+            $table->string('imagen')->nullable();
             $table->foreignId('direccion_id')->constrained('direcciones')->onDelete('cascade');
-            
             $table->rememberToken();
             $table->timestamps();
         });

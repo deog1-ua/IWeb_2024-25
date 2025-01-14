@@ -76,9 +76,7 @@ Route::middleware(['role:monitor'])->group(function () {
 });
 
 Route::middleware(['role:admin,monitor,socio'])->group(function () {
-    Route::get('/perfil', function () {
-        return view('perfil');
-    });
+    Route::get('/perfil',[PerfilController::class, 'verPerfil']);
     Route::get('/perfil/modificar', [PerfilController::class, 'modificar']);
     Route::post('/perfil/modificar', [PerfilController::class, 'guardarModificacion']);
     Route::get('/perfil/dar-baja', function () {

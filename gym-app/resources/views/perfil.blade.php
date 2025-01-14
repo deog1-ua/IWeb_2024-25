@@ -2,64 +2,86 @@
 
 @section('content')
 <div class="container mt-5">
-    <div class="card shadow-sm bg-light" style="border-radius: 10px; padding: 20px;">
-        <h3 class="text-center mb-4">Perfil de Usuario</h3>
-        <hr class="my-4">
-        <div class="row">
-            <!-- Nombre y Apellidos -->
-            <div class="col-md-6">
-                <h6><strong>Nombre:</strong> {{ Auth::user()->nombre }}</h6>
-                <h6><strong>Apellidos:</strong> {{ Auth::user()->apellidos }}</h6>
-            </div>
-            <!-- DNI y Fecha de Nacimiento -->
-            <div class="col-md-6">
-                <h6><strong>DNI:</strong> {{ Auth::user()->dni }}</h6>
-                <h6><strong>Fecha de Nacimiento:</strong> {{ Auth::user()->fecha_nacimiento }}</h6>
-            </div>
+    @if(session('message'))
+        <div class="alert alert-success text-success text-success-emphasis alert-dismissible fade show" role="alert">
+            {{ session('message') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        <hr class="my-4">
-        <div class="row">
-            <!-- Teléfono y Género -->
-            <div class="col-md-6">
-                <h6><strong>Teléfono:</strong> {{ Auth::user()->telefono }}</h6>
-                <h6><strong>Género:</strong> {{ Auth::user()->genero }}</h6>
+    @endif
+
+    <div class="card card-perfil shadow-sm bg-light" style="border-radius: 10px; padding: 20px;">
+        <h3 class="text-center mb-4">Mi Perfil</h3>
+
+        <!-- Datos de la Cuenta -->
+        <h6 class="mb-0">DATOS DE LA CUENTA</h6>
+        <hr class="my-4 mt-0">
+        <div class="row align-items-center mb-4">
+            <!-- Foto de Perfil -->
+            <div class="col-md-6 d-flex flex-column align-items-center">
+                <img src="/storage/{{ $user->imagen ?? '/images-profile/user-default.jpg' }}" 
+                     alt="Foto de Perfil" 
+                     style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
             </div>
-            <!-- Peso y Altura -->
-            <div class="col-md-6">
-                <h6><strong>Peso:</strong> {{ Auth::user()->peso }} kg</h6>
-                <h6><strong>Altura:</strong> {{ Auth::user()->altura }} cm</h6>
-            </div>
-        </div>
-        <hr class="my-4">
-        <div class="row">
-            <!-- Dirección -->
-            <div class="col-md-12">
-                <h6><strong>Dirección:</strong> {{ Auth::user()->direccion_envio }}, 
-                    {{ Auth::user()->municipio }}, {{ Auth::user()->provincia }}, 
-                    {{ Auth::user()->cp }}, {{ Auth::user()->pais }}</h6>
-            </div>
-        </div>
-        <hr class="my-4">
-        <div class="row">
+
             <!-- Datos de la Cuenta -->
             <div class="col-md-6">
-                <h6><strong>Nombre de Usuario:</strong> {{ Auth::user()->nombre_usuario }}</h6>
-                <h6><strong>Email:</strong> {{ Auth::user()->email }}</h6>
+                <p><strong>Nombre de Usuario:</strong> {{ $user->nombre_usuario }}</p>
+                <p><strong>Email:</strong> {{ $user->email }}</p>
+                <a href="/perfil/modificar-password" class="btn mt-3">Cambiar Contraseña</a>
             </div>
         </div>
+
+        <!-- Datos Personales -->
+        <div>
+            <h6 class="mb-0 mt-5">DATOS PERSONALES</h6>
+            <hr class="my-4 mt-0">
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>DNI:</strong> {{ $user->dni }}</p>
+                    <p><strong>Nombre:</strong> {{ $user->nombre }}</p>
+                    <p><strong>Apellidos:</strong> {{ $user->apellidos }}</p>    
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Fecha de Nacimiento:</strong> {{ $user->fecha_nacimiento }}</p>
+                    <p><strong>Teléfono:</strong> {{ $user->telefono }}</p>
+                    <p><strong>Género:</strong> {{ $user->genero }}</p>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <p><strong>Peso:</strong> {{ $user->peso }} kg</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Altura:</strong> {{ $user->altura }} cm</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Datos de Dirección -->
+        <div>
+        <h6 class="mb-0 mt-5">DIRECCIÓN</h6>
+        <hr class="my-4 mt-0">
+        <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Dirección:</strong> {{ $direccion->direccion_envio }} </p>
+                    <p><strong>Municipio:</strong> {{ $direccion->municipio }}</p>
+                    <p><strong>Código Postal:</strong> {{ $direccion->cp }}</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Provincia:</strong> {{ $direccion->provincia }}</p>
+                    <p><strong>País:</strong> {{ $direccion->pais }}</p>
+                </div>
+        </div>
+
         <hr class="my-4">
+
         <!-- Botones -->
-        <div class="row justify-content-center">
-            <div class="col-md-4 text-center">
-                <a href="/perfil/modificar" class="btn btn-primary w-100 mb-2">Modificar Datos</a>
-            </div>
-            <div class="col-md-4 text-center">
-                <form action="/perfil/dar-baja" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas darte de baja?');">
-                    @csrf
-                    <button type="submit" class="btn btn-danger w-100">Darse de Baja</button>
-                </form>
-            </div>
+        <div class="text-center">
+            <a href="/perfil/modificar" class="btn mb-2">Modificar Datos</a>
+            <a href="/perfil/dar-baja" class="btn mb-2">Darme de Baja</a>
         </div>
     </div>
 </div>
+
 @endsection
