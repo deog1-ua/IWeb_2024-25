@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\CrearActividadController;
+use App\Http\Controllers\HorarioController;
 
 Route::get('/', function () {
     return view('home');
@@ -12,10 +14,7 @@ Route::get('/contacto', function () {
     return view('contacto'); // El nombre de tu vista Blade
 })->name('contacto');
 
-use App\Http\Controllers\CrearActividadController;
-use App\Http\Controllers\HorarioController;
-
-Route::middleware(['role:admin,monitor'])->group(function () {
+Route::middleware(['role:admin, monitor'])->group(function () {
     Route::get('/actividades/create', [CrearActividadController::class, 'create'])->name('actividades.create');
     Route::post('/actividades', [CrearActividadController::class, 'store'])->name('actividades.store');
     Route::get('/actividades/{id}/edit', [CrearActividadController::class, 'edit'])->name('actividades.edit');
@@ -23,6 +22,11 @@ Route::middleware(['role:admin,monitor'])->group(function () {
     Route::delete('/actividades/{id}', [CrearActividadController::class, 'destroy'])->name('actividades.destroy');
     Route::get('/actividades', [CrearActividadController::class, 'index'])->name('actividades.index');
     Route::get('/actividades/{id}', [CrearActividadController::class, 'show'])->name('actividades.show');
+});
+
+Route::middleware(['role:admin'])->group(function () {
+    Route::get('/horarios/create', [HorarioController::class, 'create'])->name('horarios.create');
+    Route::post('/horarios', [HorarioController::class, 'store'])->name('horarios.store');
 });
 
 // Ruta para obtener horarios por fecha

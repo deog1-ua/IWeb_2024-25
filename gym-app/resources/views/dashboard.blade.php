@@ -41,6 +41,7 @@
                     <a href="#" class="btn btn-outline-danger m-2">Usuarios</a>
                     <a href="{{ url('/perfil') }}" class="btn btn-outline-danger m-2">Mi Perfil</a>
                     <a href="{{ route('actividades.index') }}" class="btn btn-outline-danger m-2">Gestionar Actividades</a>
+                    <a href="{{ route('horarios.create') }}" class="btn btn-outline-danger m-2">Gestionar Horarios</a>
                 </div>
             </div>
         </div>
