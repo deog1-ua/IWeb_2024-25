@@ -43,5 +43,9 @@ class DatabaseSeeder extends Seeder
         $this->call(ReservaSeeder::class);
         // Mostramos información por consola
         $this->command->info('Reservas table seeded!');
+        $this->call(Prueba::class);
+        // Mostramos información por consola 
+        $this->command->info('Prueba seeded!');
+
     }
 }

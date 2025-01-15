@@ -132,6 +132,25 @@ class UsuariosTableSeeder extends Seeder
                 'direccion_id' => 6,
                 'imagen' => 'images-profile/user-default.jpg',
             ],
+
+            [
+                'tipo_usuario' => 'socio',
+                'dni' => '56789012M',
+                'nombre' => 'Socio',
+                'apellidos' => 'Tres',
+                'nombre_usuario' => 'socio3',
+                'email' => 'socio3@example.com',
+                'fecha_nacimiento' => '1998-12-15',
+                'telefono' => '600111222',
+                'genero' => 'mujer',
+                'peso' => 65.0,
+                'altura' => 1.65,
+                'fecha_alta' => now(),
+                'activo' => true,
+                'fecha_baja' => null,
+                'saldo' => 0.0,
+                'direccion_id' => 6,
+            ],
         ];
 
         DB::table('usuarios')->insert($usuarios);
