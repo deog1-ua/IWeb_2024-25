@@ -76,7 +76,7 @@
                                 <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
                                     Mi Calendario
                                 </a>
-                                <a class="dropdown-item" href="/mis-actividades" style="margin-bottom: 10px;">
+                                <a class="dropdown-item" href="{{ route('actividades.index') }}" style="margin-bottom: 10px;">
                                     Mis Actividades
                                 </a>
                             @endif
