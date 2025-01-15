@@ -16,7 +16,7 @@ return new class extends Migration
             $table->time('hora_inicio');
             $table->time('hora_fin');
             $table->date('fecha');
-            $table->string('sala')->unique();
+            $table->string('sala');
             $table->integer('aforo');
             $table->foreignId('actividad_id')->nullable()->constrained('actividades')->onDelete('cascade'); 
             $table->timestamps();
