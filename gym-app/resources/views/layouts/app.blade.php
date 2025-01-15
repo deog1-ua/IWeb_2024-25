@@ -66,6 +66,12 @@
                                     <a class="dropdown-item" href="/listado-reservas" style="margin-bottom: 10px;">
                                         Reservas
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('actividades.index') }}" style="margin-bottom: 10px;">
+                                        Gestionar Actividades
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('horarios.create') }}" style="margin-bottom: 10px;">
+                                        Gestionar Horarios
+                                    </a>
                                 @endif
                             @endguest
                             
