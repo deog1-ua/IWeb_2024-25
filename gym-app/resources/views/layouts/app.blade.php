@@ -132,9 +132,8 @@
       <ul class="list-unstyled text-small">
         <li><a class="link-secondary" href="/">Inicio</a></li>
         <li><a class="link-secondary" href="/actividades-publico">Servicios</a></li>
-        <li><a class="link-secondary" href="#">Centros</a></li>
-        <li><a class="link-secondary" href="#">Blog</a></li>
-        <li><a class="link-secondary" href="#">Contacto</a></li>
+        <li><a class="link-secondary" href="/centros">Centros</a></li>
+        <li><a class="link-secondary" href="/contacto">Contacto</a></li>
         <li><a class="link-secondary" href="/sobre-nosotros">Sobre Nosotros</a></li>
         
       </ul>
