@@ -77,6 +77,7 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('/usuarios/pendientes', [UsuarioController::class, 'pendientes'])->name('usuarios.pendientes');
     Route::get('/usuarios/buscar', [UsuarioController::class, 'buscar'])->name('usuarios.buscar');
     Route::put('/usuarios/{id}/bloquear', [UsuarioController::class, 'bloquear'])->name('usuarios.bloquear');
+    Route::put('/usuarios/{id}/desbloquear', [UsuarioController::class, 'desbloquear'])->name('usuarios.desbloquear');
     Route::put('/usuarios/{id}/aprobar', [UsuarioController::class, 'aprobar'])->name('usuarios.aprobar');
     Route::delete('/usuarios/{id}/rechazar', [UsuarioController::class, 'rechazar'])->name('usuarios.rechazar');
 });
