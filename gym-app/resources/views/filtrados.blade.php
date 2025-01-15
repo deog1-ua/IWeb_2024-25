@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 
 @section('content')
@@ -17,6 +16,7 @@
         }
         .navbar {
             display: flex;
+            justify-content: space-between; /* Alinea los elementos de la barra de navegación */
             align-items: center;
             margin-bottom: 20px;
         }
@@ -25,21 +25,36 @@
             color: white;
             border: none;
             padding: 10px 20px;
-            margin-right: 10px;
             border-radius: 5px;
             cursor: pointer;
+            margin-right: 10px;
         }
         .navbar button:hover {
             background-color: #8b0000;
         }
         .search-bar {
-            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            width: 60%; /* Ajustamos el ancho de la barra de búsqueda */
         }
         .search-bar input {
-            width: 100%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            flex-grow: 1;
+            font-size: 16px;
+        }
+        .search-bar button {
+            padding: 10px 20px;
+            background-color: #a52a2a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .search-bar button:hover {
+            background-color: #8b0000;
         }
         .user-list {
             margin-top: 20px;
@@ -85,98 +100,86 @@
         .reject-button:hover {
             background-color: darkgray;
         }
+        .blocked {
+            color: red;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
 <div class="navbar">
-    <button onclick="showUsers()">Usuarios</button>
-    <button onclick="showPending()">Pendientes</button>
+    <div class="navbar-buttons">
+        <button onclick="window.location.href='{{ route('usuarios.index') }}'">Usuarios</button>
+        <button onclick="window.location.href='{{ route('usuarios.pendientes') }}'">Pendientes</button>
+    </div>
+
+    <!-- Formulario de búsqueda con un botón de búsqueda al lado -->
     <div class="search-bar">
-        <input type="text" placeholder="Buscar...">
+        <form method="GET" action="{{ route('usuarios.index') }}" style="width: 100%; display: flex;">
+            <input type="text" name="search" placeholder="Buscar..." value="{{ request()->get('search') }}">
+            <button type="submit">Buscar</button>
+        </form>
     </div>
 </div>
 
 <div id="content">
-    <h2>Listado de usuarios</h2>
-    <div class="user-list">
-        @foreach($usuarios as $usuario)
-        <div class="user-item">
-            <img src="/path/to/image" alt="User Photo">
-            <div class="user-details">
-                <strong>{{ $usuario->nombre }} {{ $usuario->apellidos }}</strong><br>
-                <span>{{ $usuario->email }}</span><br>
-                <span>{{ $usuario->telefono }}</span>
+    @isset($usuarios) <!-- Mostrar solo si estamos en la vista de usuarios activos -->
+        <h2>Usuarios Activos</h2>
+        <div class="user-list">
+            @foreach($usuarios as $usuario)
+            <div class="user-item">
+                <img src="/path/to/image" alt="User Photo">
+                <div class="user-details">
+                    <strong>{{ $usuario->nombre }} {{ $usuario->apellidos }}</strong><br>
+                    <span>{{ $usuario->email }}</span><br>
+                    <span>{{ $usuario->telefono }}</span>
+
+                    <!-- Indicar si el usuario está bloqueado -->
+                    @if($usuario->bloqueado)
+                        <span class="blocked">Usuario bloqueado</span>
+                    @endif
+                </div>
+                <!-- Solo mostrar el botón de bloquear si el usuario no está bloqueado -->
+                @if(!$usuario->bloqueado && $usuario->tipo_usuario == 'socio')
+                <form action="{{ route('usuarios.bloquear', $usuario->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <button class="block-button" type="submit">Bloquear</button>
+                </form>
+                @endif
             </div>
-                        @if($usuario->tipo_usuario == 'socio') <!-- Verifica si el usuario es un socio -->
-                        <form action="{{ route('usuarios.bloquear', $usuario->id) }}" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <button class="block-button" type="submit">Bloquear</button>
-                        </form>
-                        @endif
-                    </div>
-        @endforeach
-    </div>
+            @endforeach
+        </div>
+    @endisset
+
+    @isset($pendientes) <!-- Mostrar solo si estamos en la vista de usuarios pendientes -->
+        <h2>Usuarios Pendientes</h2>
+        <div class="user-list">
+            @foreach($pendientes as $pendiente)
+            <div class="user-item">
+                <img src="/path/to/image" alt="User Photo">
+                <div class="user-details">
+                    <strong>{{ $pendiente->nombre }} {{ $pendiente->apellidos }}</strong><br>
+                    <span>{{ $pendiente->email }}</span><br>
+                    <span>{{ $pendiente->telefono }}</span>
+                </div>
+                <form action="{{ route('usuarios.aprobar', $pendiente->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <button class="block-button" type="submit">Aprobar</button>
+                </form>
+                <form action="{{ route('usuarios.rechazar', $pendiente->id) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button class="reject-button" type="submit">Rechazar</button>
+                </form>
+            </div>
+            @endforeach
+        </div>
+    @endisset
 </div>
 
-<script>
-    function showUsers() {
-        document.getElementById('content').innerHTML = `
-            <h2>Listado de usuarios</h2>
-            <div class="user-list">
-                @foreach($usuarios as $usuario)
-                <div class="user-item">
-                    <img src="/path/to/image" alt="User Photo">
-                    <div class="user-details">
-                        <strong>{{ $usuario->nombre }} {{ $usuario->apellidos }}</strong><br>
-                        <span>{{ $usuario->email }}</span><br>
-                        <span>{{ $usuario->telefono }}</span>
-                    </div>
-                        @if($usuario->tipo_usuario == 'socio') <!-- Verifica si el usuario es un socio -->
-                        <form action="{{ route('usuarios.bloquear', $usuario->id) }}" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <button class="block-button" type="submit">Bloquear</button>
-                        </form>
-                        @endif
-                    </div>
-                @endforeach
-            </div>
-        `;
-    }
-
-    function showPending() {
-        document.getElementById('content').innerHTML = `
-            <h2>Usuarios pendientes</h2>
-            <div class="user-list">
-                @foreach($pendientes as $pendiente)
-                <div class="user-item">
-                    <img src="/path/to/image" alt="User Photo">
-                    <div class="user-details">
-                        <strong>{{ $pendiente->nombre }} {{ $pendiente->apellidos }}</strong><br>
-                        <span>{{ $pendiente->email }}</span><br>
-                        <span>{{ $pendiente->telefono }}</span>
-                    </div>
-                    <form action="{{ route('usuarios.aprobar', $pendiente->id) }}" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <button class="block-button" type="submit">Aprobar</button>
-                    </form>
-
-                    <!-- Botón de Rechazo -->
-                    <form action="{{ route('usuarios.rechazar', $pendiente->id) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE') <!-- Usamos DELETE para eliminar al usuario -->
-                        <button class="reject-button" type="submit">Rechazar</button>
-                    </form>
-                </div>
-                @endforeach
-            </div>
-        `;
-    }
-</script>
-
+@endsection
 </body>
 </html>
-@endsection
