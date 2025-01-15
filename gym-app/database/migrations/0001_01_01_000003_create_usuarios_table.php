@@ -27,6 +27,7 @@ return new class extends Migration
             $table->float('altura');
             $table->date('fecha_alta');
             $table->boolean('activo');
+            $table->boolean('bloqueado') -> default(0);
             $table->date('fecha_baja')->nullable();
             $table->float('saldo');
             $table->foreignId('direccion_id')->constrained('direcciones')->onDelete('cascade');

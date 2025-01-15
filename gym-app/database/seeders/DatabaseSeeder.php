@@ -31,5 +31,9 @@ class DatabaseSeeder extends Seeder
         $this->call(UsuariosPasswordsTableSeeder::class);
         // Mostramos información por consola 
         $this->command->info('UsuariosPasswords table seeded!');
+
+        $this->call(Prueba::class);
+        // Mostramos información por consola 
+        $this->command->info('Prueba seeded!');
     }
 }

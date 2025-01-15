@@ -27,7 +27,7 @@
                 <a class="nav-link" href="#">Servicios</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Centros</a>
+                <a class="nav-link" href="/centros">Centros</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Blog</a>
@@ -63,7 +63,7 @@
                                     Mi Perfil
                                 </a>   
                                 @if (Auth::user()->tipo_usuario == "admin")
-                                    <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
+                                    <a class="dropdown-item" href="{{ route('usuarios.index') }}" style="margin-bottom: 10px;">
                                         Usuarios
                                     </a>
                                     <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
@@ -82,8 +82,8 @@
                                 <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
                                     Mis reservas
                                 </a>
-                                <a class="dropdown-item" href="#" style="margin-bottom: 10px;">
-                                    Mi Saldo
+                                <a class="dropdown-item" href="{{ url('/wallet') }}" style="margin-bottom: 10px;">
+                                    Mi Wallet
                                 </a>
                             @endif
                             
