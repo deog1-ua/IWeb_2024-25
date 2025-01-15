@@ -62,13 +62,13 @@
                             <strong>Sala:</strong> {{ $horario->sala }}
                         </p>
                     </div>
-                        
+                    @if(Auth::check())
                         @php
-                            $yaReservado = \App\Models\Reserva::where('usuario_id', auth()->user()->id)
-                                            ->where('horario_id', $horario->id)
-                                            ->exists();
-                        @endphp
 
+                            $yaReservado = \App\Models\Reserva::where('usuario_id', auth()->user()->id)
+                                                ->where('horario_id', $horario->id)
+                                                ->exists();
+                        @endphp
                         @if(Auth::user()->tipo_usuario == "socio")
                             <div class="text-center">
                                 @if($yaReservado)
@@ -88,6 +88,7 @@
                                 @endif
                             </div>
                         @endif
+                    @endif
                     </li>
                 @endforeach
             </ul>
