@@ -11,7 +11,24 @@
     cursor: pointer;
 }
 
+.dropdown-item:active {
+    background-color: #B70F0A !important; /* Cambia el color a rojo */
+    color: white !important; /* Cambia el color del texto */
+}
+
+
 footer{
     border-top: 1px solid #7f1d1d;
+}
+
+.a-general {
+    background-color: #B70F0A;
+    color: #f8fafc;
+    text-decoration: none;
+    border: none;
+    &:hover {
+        background-color: #a30c0c;
+        text-decoration: none;
+    }
 }
 

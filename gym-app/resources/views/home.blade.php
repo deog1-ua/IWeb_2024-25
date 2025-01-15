@@ -44,7 +44,7 @@
             <div class="carousel-caption text-end">
                 <h1>CENTROS DISPONIBLES</h1>
                 <p>Conoce todos nuestros centros más cerca de ti.</p>
-                <p><a class="btn btn-lg btn-danger" href="#">Ver Centros</a></p>
+                <p><a class="btn btn-lg btn-danger" href="/centros">Ver Centros</a></p>
             </div>
             </div>
         </div>

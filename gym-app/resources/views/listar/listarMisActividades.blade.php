@@ -14,7 +14,7 @@
                             <p class="card-text text-center">{{ $actividad->descripcion }}</p>
                             <p class="card-text text-center">Con: {{ $actividad->user->nombre }} {{$actividad->user->apellidos}}</p>
                             <div class="mt-auto d-flex justify-content-center">
-                                <a href="/actividades/{{ $actividad->id }}" class="btn btn-primary btn-block">Detalles</a>
+                                <a href="/mis-actividades/{{ $actividad->id }}" class="btn btn-primary btn-block">Detalles</a>
                             </div>
                         </div>
                     </div>

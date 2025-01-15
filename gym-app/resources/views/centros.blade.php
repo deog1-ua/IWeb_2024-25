@@ -35,7 +35,7 @@
                 <div class="info-box p-4 text-center">
                     <h3>Contáctanos</h3>
                     <p>Ponte en contacto con nosotros y resuelve cualquier duda.</p>
-                    <a href="#" class="btn btn-danger">Contáctanos</a>
+                    <a href="/contacto" class="btn btn-danger">Contáctanos</a>
                 </div>
             </div>
         </div>

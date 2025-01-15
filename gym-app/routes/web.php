@@ -98,6 +98,9 @@ Route::middleware(['role:socio'])->group(function () {
 Route::middleware(['role:monitor'])->group(function () {
     // Poner aquí las rutas que pueden ver el administrador, el monitor y el socio
     Route::get('/mis-actividades', [ActividadController::class, 'listbyMonitor']);
+    Route::get('/mis-actividades/{id}', [ActividadController::class, 'show']);
+    Route::get('/mis-actividades/{id}/reservas', [ActividadController::class, 'showReservas'])->name('actividades.reservas');
+
 });
 
 Route::middleware(['role:admin,monitor,socio'])->group(function () {
