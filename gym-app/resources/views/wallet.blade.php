@@ -25,16 +25,6 @@
             font-weight: bold;
         }
 
-        footer {
-            width: 100%;
-            background-color: #f4f4f4;
-            color: #333;
-            text-align: center;
-            padding: 15px 0;
-            font-size: 0.9rem;
-            margin-top: 20px;
-        }
-
         .container {
             display: flex;
             justify-content: space-around;
@@ -56,7 +46,7 @@
             text-align: center;
             flex: 1;
             min-height: 200px;
-            margin-top: 20px; /* Agregado margen superior para más separación */
+            margin-top: 20px;
         }
 
         .wallet-balance {
@@ -75,10 +65,6 @@
             cursor: pointer;
             font-size: 1rem;
             transition: background-color 0.3s;
-        }
-
-        .wallet-button:hover {
-            background-color: #800000;
         }
 
         label {
@@ -104,6 +90,7 @@
             font-size: 1rem;
             transition: background-color 0.3s;
             margin-top: 20px;
+            text-decoration: none;
         }
 
         .recharge-button:hover {
@@ -116,14 +103,6 @@
             margin-top: 20px;
             font-size: 2.5rem;
         }
-
-        /* Cambié el tamaño y estilo del subtítulo */
-        .title {
-            color: #b00000;
-            font-size: 1.3rem; /* Hizo más pequeño el subtítulo */
-            font-weight: 600;
-            margin-bottom: 30px; /* Aumentó el espacio debajo del subtítulo */
-        }
     </style>
 </head>
 
@@ -135,14 +114,10 @@
         <div class="wallet-container">
             <div class="title">Mi saldo</div>
             <div class="wallet-balance">
-                <?php
-                // Obtenemos el saldo del usuario autenticado
-                $user = Auth::user();
-                $walletBalance = $user->saldo ?? 0; // Usamos un valor predeterminado si saldo es nulo
-                echo number_format($walletBalance, 2) . ' €';
-                ?>
+                {{-- Mostramos el saldo pasado desde el controlador --}}
+                {{ number_format($walletBalance, 2) . ' €' }}
             </div>
-            <button class="wallet-button">Ver Pagos</button>
+            <a href="{{ route('pagos.index') }}" class="recharge-button">Mis Pagos</a>
         </div>
 
         <div class="recharge-container">

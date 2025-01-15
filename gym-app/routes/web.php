@@ -54,15 +54,10 @@ Route::middleware(['role:admin,monitor'])->group(function () {
 });
 
 Route::middleware(['role:socio'])->group(function () {
-    Route::get('/wallet', function () {
-        return view('wallet');
-    });
-
-    Route::get('/pagos', function () {
-        return view('pagos');
-    });
-    Route::get('/wallet/payments', [WalletController::class, 'showPayments'])->name('wallet.payments');
+    Route::get('/wallet', [WalletController::class, 'index'])->name('wallet');
+    Route::get('pagos', [WalletController::class, 'pagos'])->name('pagos.index');
 });
+
 
 Route::middleware(['role:admin,monitor,socio'])->group(function () {
     Route::get('/perfil', function () {
