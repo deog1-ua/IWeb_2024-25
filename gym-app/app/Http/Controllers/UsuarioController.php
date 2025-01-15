@@ -81,6 +81,15 @@ class UsuarioController extends Controller
         return redirect()->route('usuarios.index');
     }
 
+    public function desbloquear($id)
+    {
+        $user = User::find($id);
+        $user->bloqueado = 0;
+        $user->save();
+
+        return redirect()->route('usuarios.index');
+    }
+
     public function aprobar($id)
     {
         $user = User::find($id);

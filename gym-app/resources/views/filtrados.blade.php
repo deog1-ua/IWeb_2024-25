@@ -129,7 +129,7 @@
         <div class="user-list">
             @foreach($usuarios as $usuario)
             <div class="user-item">
-                <img src="/path/to/image" alt="User Photo">
+                <img src="/storage/{{ $usuario->imagen ?? '/images-profile/user-default.jpg' }}" alt="User Photo">
                 <div class="user-details">
                     <strong>{{ $usuario->nombre }} {{ $usuario->apellidos }}</strong><br>
                     <span>{{ $usuario->email }}</span><br>
@@ -148,6 +148,14 @@
                     <button class="block-button" type="submit">Bloquear</button>
                 </form>
                 @endif
+                @if($usuario->bloqueado && $usuario->tipo_usuario == 'socio')
+                <form action="{{ route('usuarios.desbloquear', $usuario->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <button class="btn btn-secondary" type="submit">Desbloquear</button>
+                </form>
+                @endif
+            
             </div>
             @endforeach
         </div>
@@ -158,7 +166,7 @@
         <div class="user-list">
             @foreach($pendientes as $pendiente)
             <div class="user-item">
-                <img src="/path/to/image" alt="User Photo">
+                <img src="/storage/{{ $user->imagen ?? '/images-profile/user-default.jpg' }}"  alt="User Photo">
                 <div class="user-details">
                     <strong>{{ $pendiente->nombre }} {{ $pendiente->apellidos }}</strong><br>
                     <span>{{ $pendiente->email }}</span><br>
