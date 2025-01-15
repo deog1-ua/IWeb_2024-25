@@ -77,9 +77,9 @@
                             
                             @if (Auth::user()->tipo_usuario == "monitor")
                                 <a class="dropdown-item" href="/actividades" style="margin-bottom: 10px;">
-                                    Actividades
+                                    Gestionar Actividades
                                 </a>
-                                <a class="dropdown-item" href="{{ route('actividades.index') }}" style="margin-bottom: 10px;">
+                                <a class="dropdown-item" href="/mis-actividades" style="margin-bottom: 10px;">
                                     Mis Actividades
                                 </a>
                             @endif

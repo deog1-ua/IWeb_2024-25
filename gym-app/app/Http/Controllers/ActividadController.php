@@ -20,5 +20,16 @@ class ActividadController extends Controller
         return view('listar.listarMisActividades', compact('actividades', 'actividad1'));
     }
 
+    public function show($id)
+    {
+        $actividad = Actividad::with('user', 'horario')->findOrFail($id);
+
+        // Verificar que el monitor solo pueda acceder a actividades asignadas a él
+        if (auth()->user()->tipo_usuario === 'monitor' && $actividad->usuario_id !== auth()->user()->id) {
+            abort(403, 'No tienes permiso para ver esta actividad.');
+        }
+
+        return view('mostrar.detalleActividad', compact('actividad'));
+    }
 
 }
