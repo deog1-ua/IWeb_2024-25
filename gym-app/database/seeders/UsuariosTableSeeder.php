@@ -150,6 +150,7 @@ class UsuariosTableSeeder extends Seeder
                 'fecha_baja' => null,
                 'saldo' => 0.0,
                 'direccion_id' => 6,
+                'imagen' => 'images-profile/user-default.jpg',
             ],
         ];
 
