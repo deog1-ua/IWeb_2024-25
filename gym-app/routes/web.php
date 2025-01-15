@@ -7,15 +7,25 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\ReservasController;
 use App\Http\Controllers\ActividadController;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\WalletController;
+
 
 Route::get('/', function () {
     return view('home');
 });
 
 
+
 Route::get('/sobre-nosotros', function () {
     return view('sobre_nosotros');
 });
+
+Route::get('/centros', function () {
+    return view('centros');
+});
+
+
 Route::get('/contacto', function () {
     return view('contacto'); // El nombre de tu vista Blade
 })->name('contacto');
@@ -42,8 +52,6 @@ Route::middleware(['role:admin'])->group(function () {
 
 Route::get('/actividades/publico/{id}', [CrearActividadController::class, 'showpublico'])->name('actividades.showpublico');
 
-
-// Ruta para obtener horarios por fecha
 Route::get('/horarios-por-fecha', [HorarioController::class, 'getHorariosPorFecha']);
 
 Route::get('/login', function () {
@@ -65,6 +73,12 @@ Route::post('/registro', [LoginController::class, 'registro']);
 Route::middleware(['role:admin'])->group(function () {
     // Poner aquí las rutas que solo puede ver el administrador
     Route::get('/listado-reservas', [ReservasController::class, 'listReservas']);
+    Route::get('/usuarios', [UsuarioController::class, 'index'])->name('usuarios.index');
+    Route::get('/usuarios/pendientes', [UsuarioController::class, 'pendientes'])->name('usuarios.pendientes');
+    Route::get('/usuarios/buscar', [UsuarioController::class, 'buscar'])->name('usuarios.buscar');
+    Route::put('/usuarios/{id}/bloquear', [UsuarioController::class, 'bloquear'])->name('usuarios.bloquear');
+    Route::put('/usuarios/{id}/aprobar', [UsuarioController::class, 'aprobar'])->name('usuarios.aprobar');
+    Route::delete('/usuarios/{id}/rechazar', [UsuarioController::class, 'rechazar'])->name('usuarios.rechazar');
 });
 
 Route::middleware(['role:admin,monitor'])->group(function () {
@@ -76,6 +90,8 @@ Route::middleware(['role:socio'])->group(function () {
     Route::get('/mis-reservas', [ReservasController::class, 'listReservasByUser'])->name('mis-reservas');
     Route::get('/mis-reservas/cancelar/{id}', [ReservasController::class, 'deleteReserva'])->name('cancelar');
     Route::post('/reservar', [ReservasController::class, 'reservar'])->name('reservar');
+    Route::get('/wallet', [WalletController::class, 'index'])->name('wallet');
+    Route::get('pagos', [WalletController::class, 'pagos'])->name('pagos.index');
 });
 
 Route::middleware(['role:monitor'])->group(function () {
@@ -97,4 +113,3 @@ Route::middleware(['role:admin,monitor,socio'])->group(function () {
     });
     Route::post('/perfil/modificar-password', [PerfilController::class, 'modificarPassword']);
 });
-

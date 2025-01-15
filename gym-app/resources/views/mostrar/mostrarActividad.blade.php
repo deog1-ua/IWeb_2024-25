@@ -1,73 +1,115 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container my-5">
+<div class="contenedor">
     <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class="card shadow-sm">
-                <div class="card-header bg-danger text-white text-center">
-                    <h3>Detalles de la Actividad</h3>
-                </div>
-                <div class="card-body">
-                    <!-- Imagen -->
-                    <div class="text-center mb-4">
-                        <img src="{{ asset('storage/images/' . $actividad->imagen) }}" alt="Imagen de {{ $actividad->nombre }}" class="rounded" style="width: 200px; height: 200px; object-fit: cover;">
-                    </div>
+        <div class="col-lg-8 d-flex align-items-center">
+            <!-- Contenedor de texto -->
+            <div class="col-md-7">
+                <h2 class="titulo3">{{$actividad->nombre}}</h2>
+                @if($actividad->user->genero == 'mujer')
+                    <p class="subtitulo1">Profesora: {{$actividad->user->nombre}} {{$actividad->user->apellidos}}</p>
+                @else
+                    <p class="subtitulo1">Profesor: {{$actividad->user->nombre}} {{$actividad->user->apellidos}}</p>
+                @endif
 
-                    <!-- Detalles de la Actividad -->
-                    <h4>{{ $actividad->nombre }}</h4>
-                    <p class="mb-1"><strong>Descripción:</strong> {{ $actividad->descripcion }}</p>
-                    <p class="mb-1"><strong>Precio:</strong> €{{ number_format($actividad->importe, 2) }}</p>
-                    <p class="mb-1"><strong>Monitor:</strong> {{ $actividad->user->nombre }} {{ $actividad->user->apellidos }}</p>
-
-                    <!-- Horarios -->
-                    <h5 class="mt-4">Horarios</h5>
-                    @if($actividad->horario->isNotEmpty())
-                        <ul class="list-group">
-                            @foreach($actividad->horario as $horario)
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <strong>Fecha:</strong> {{ $horario->fecha }} <br>
-                                        <strong>Hora:</strong> {{ $horario->hora_inicio }} - {{ $horario->hora_fin }} <br>
-                                        <strong>Sala:</strong> {{ $horario->sala }} <br>
-                                        <strong>Aforo:</strong> {{ $horario->aforo }}
-                                    </div>
-                                    
-                                    @php
-                                        $yaReservado = \App\Models\Reserva::where('usuario_id', auth()->user()->id)
-                                                        ->where('horario_id', $horario->id)
-                                                        ->exists();
-                                    @endphp
-
-                                    @if(Auth::user()->tipo_usuario == "socio")
-                                        <div class="mt-2">
-                                            @if($yaReservado)
-                                                <a class="btn btn-danger btn-sm">Reservado</a>
-                                                <a class="btn btn-secondary btn-sm" href="{{ route('cancelar', $horario->id) }}">Cancelar</a>
-                                            @else
-                                                <form method="POST" action="{{ route('reservar') }}">
-                                                    @csrf
-                                                    <input type="hidden" name="horario_id" value="{{ $horario->id }}">
-                                                    <button type="submit" class="btn btn-danger btn-sm">Reservar</button>
-                                                </form>
-                                            @endif
-                                        </div>
-                                    @endif
-                                </li>
-                            @endforeach
-                        </ul>
-                    @else
-                        <p class="text-muted">No hay horarios asignados a esta actividad.</p>
-                    @endif
-
-                    <!-- Botón de Volver -->
-                    <div class="mt-4 text-center">
-                        <a href="{{ route('actividades.index') }}" class="btn btn-secondary">Volver al Listado</a>
-                    </div>
-                        
-                </div>
+                <h3 class="titulo4">¿Qué es el {{$actividad->nombre}}?</h3>
+                <p class="parrafo3">{{$actividad->descripcion}}</p>
+                <p class="parrafo4"><strong>Precio:</strong> €{{ number_format($actividad->importe, 2) }}</p>
+            </div>
+            <!-- Contenedor de imagen -->
+            <div class="col-md-5 d-flex justify-content-end">
+                <img src="{{ asset('storage/images/' . $actividad->imagen) }}" alt="Imagen de {{ $actividad->nombre }}" 
+                    class="img-fluid rounded" 
+                    style="max-width: 100%; height: auto; max-height: 500px; width: auto;">
             </div>
         </div>
+        <div class="col-lg-8">
+    <hr>
+    @php
+        use Carbon\Carbon;
+    @endphp
+    <div style="margin-top: 30px; margin-bottom: 50px;"> 
+        <h3 class="titulo4">¿Cuándo puedo asistir?</h3>
+        
+        @if($actividad->horario->isNotEmpty())
+            <ul class="list-group mx-auto" style="max-width: 900px;">
+                @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" id="success-alert" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
+                @if(session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" id="error-alert" role="alert">
+                        {{ session('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
+                @foreach($actividad->horario as $horario)
+                    <li class="list-group-item d-flex justify-content-between align-items-center border rounded shadow-sm p-3 mb-2">
+                    <div>
+                        @php
+                            $fechaFormateada = Carbon::parse($horario->fecha)->locale('es')->isoFormat('dddd D, MMMM [de] YYYY');
+                            $horaInicioFormateada = \Carbon\Carbon::parse($horario->hora_inicio)->format('H:i') . 'h';
+                            $horaFinFormateada = \Carbon\Carbon::parse($horario->hora_fin)->format('H:i') . 'h';
+                        @endphp
+                        <h5 class="text-dark mb-1"><strong>Fecha:</strong> {{ ucfirst($fechaFormateada) }}</h5>
+                        <p class="mb-1">
+                            <strong>Hora:</strong> {{ $horaInicioFormateada }} - {{ $horaFinFormateada }} <br>
+                            <strong>Sala:</strong> {{ $horario->sala }}
+                        </p>
+                    </div>
+                        
+                        @php
+                            $yaReservado = \App\Models\Reserva::where('usuario_id', auth()->user()->id)
+                                            ->where('horario_id', $horario->id)
+                                            ->exists();
+                        @endphp
+
+                        @if(Auth::user()->tipo_usuario == "socio")
+                            <div class="text-center">
+                                @if($yaReservado)
+                                    <a class="btn btn-outline-danger btn-sm disabled" href="#" tabindex="-1" role="button" aria-disabled="true" 
+                                        style="border: 2px solid red; color: red; background-color: white;">
+                                        Reservado
+                                    </a>
+                                    <a class="btn btn-secondary btn-sm mt-1" href="{{ route('cancelar', $horario->id) }}">Cancelar</a>
+                                @else
+                                    <form method="POST" action="{{ route('reservar') }}">
+                                        @csrf
+                                        <input type="hidden" name="horario_id" value="{{ $horario->id }}">
+                                        <button type="submit" class="btn btn-danger btn-sm shadow-sm mt-1">
+                                            Reservar
+                                        </button>
+                                    </form>
+                                @endif
+                            </div>
+                        @endif
+                    </li>
+                @endforeach
+            </ul>
+        @else
+            <p class="text-muted text-center mt-4">No hay horarios asignados a esta actividad.</p>
+        @endif
     </div>
 </div>
+        
+<script>
+    // Función para ocultar las alertas después de 5 segundos
+    setTimeout(function() {
+        const successAlert = document.getElementById('success-alert');
+        const errorAlert = document.getElementById('error-alert');
+
+        if (successAlert) {
+            successAlert.style.display = 'none';
+        }
+
+        if (errorAlert) {
+            errorAlert.style.display = 'none';
+        }
+    }, 3000); // 3000 milisegundos = 3 segundos
+</script>
 @endsection

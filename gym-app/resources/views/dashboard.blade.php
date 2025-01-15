@@ -11,8 +11,9 @@
                 <hr class="my-4" style="border: 0.5px solid #ccc;">
                 <div class="d-flex flex-wrap justify-content-center">
                     <a href="{{ url('/') }}" class="btn btn-outline-danger m-2">Inicio</a>
-                    <a href="#" class="btn btn-outline-danger m-2">Mis Reservas</a>
+                    <a href="/mis-reservas" class="btn btn-outline-danger m-2">Mis Reservas</a>
                     <a href="{{ url('/perfil') }}" class="btn btn-outline-danger m-2">Mi Perfil</a>
+                    <a href="{{ url('/wallet') }}" class="btn btn-outline-danger m-2">Mi Wallet</a>
                 </div>
             </div>
         </div>
@@ -38,7 +39,7 @@
                 <p class="card-text">Has accedido a la plataforma del administrador para gestionar la web de nuestro gimnasio.</p>
                 <hr class="my-4" style="border: 0.5px solid #ccc;">
                 <div class="d-flex flex-wrap justify-content-center">
-                    <a href="#" class="btn btn-outline-danger m-2">Usuarios</a>
+                    <a href="{{ route('usuarios.index') }}" class="btn btn-outline-danger m-2">Usuarios</a>
                     <a href="{{ url('/perfil') }}" class="btn btn-outline-danger m-2">Mi Perfil</a>
                     <a href="{{ route('actividades.index') }}" class="btn btn-outline-danger m-2">Gestionar Actividades</a>
                     <a href="{{ route('horarios.create') }}" class="btn btn-outline-danger m-2">Gestionar Horarios</a>

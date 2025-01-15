@@ -90,8 +90,8 @@
                 </div> 
             </div> 
 
-            <div style="text-align: center;margin-bottom:60px;margin-top:40px;" class="design-button">
-                <a class="btn btn-lg btn-primary design-button">Inscribirme ahora</a>
+            <div style="text-align: center;margin-bottom:60px;margin-top:40px;">
+                <a href="/registro" class="btn btn-lg design-button-a">Inscribirme ahora</a>
             </div>
         </div>
         <div>

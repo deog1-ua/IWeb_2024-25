@@ -5,14 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Reserva;
 
+
 class ReservasController extends Controller
 {
     public function listReservas()
     {
-        /// ordenalos de mas pronto a mas tarde por fecha de horario
-        $reservas = Reserva::with('horario')
-                    ->get()
-                    ->sortBy('horario.fecha'); 
+        // Ordenar por usuario y luego por fecha de horario
+        $reservas = Reserva::select('reservas.*')
+        ->join('usuarios', 'reservas.usuario_id', '=', 'usuarios.id') // Asumiendo que 'usuario_id' es la clave foránea
+        ->join('horarios', 'reservas.horario_id', '=', 'horarios.id') // Asumiendo que 'horario_id' es la clave foránea
+        ->orderBy('usuarios.nombre_usuario') // Ordenar por nombre del usuario
+        ->orderBy('horarios.fecha') // Ordenar por fecha del horario
+        ->with(['user', 'horario']) // Cargar las relaciones
+        ->get();
+
         return view('listar.listarReservas', compact('reservas'));
     }
 
@@ -29,7 +35,9 @@ class ReservasController extends Controller
 
     public function deleteReserva($id)
     {
-        $reserva = Reserva::find($id);
+        $reserva = Reserva::where('usuario_id', auth()->user()->id)
+                    ->where('horario_id', $id)
+                    ->first();
         if ($reserva) {
             $reserva->delete();
 
@@ -52,6 +60,6 @@ class ReservasController extends Controller
             'horario_id' => $request->horario_id,
         ]);
 
-        return redirect()->route('mis-reservas')->with('success', 'Reserva realizada correctamente');
+        return redirect()->back()->with('success', 'Reserva realizada correctamente');
     }
 }
