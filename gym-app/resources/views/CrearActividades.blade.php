@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="card shadow-sm">
-                <div class="card-header bg-danger text-white text-center">
+                <div class="card-header text-center">
                     <h3>Crear Nueva Actividad</h3>
                 </div>
                 <div class="card-body">
@@ -64,8 +64,12 @@
                             <label for="imagen" class="form-label">Imagen de la Actividad</label>
                             <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*" required>
                         </div>
-
-                        <button type="submit" class="btn btn-danger w-100">Crear Actividad</button>
+                        <div class="mt-4 text-center actividad-estilos">
+                            <a href="{{ route('actividades.index') }}" class="btn a-volver me-2">
+                                Volver al Listado
+                            </a>
+                            <button type="submit" class="btn btn-danger">Crear Actividad</button>
+                        </div>
                     </form>
                 </div>
             </div>

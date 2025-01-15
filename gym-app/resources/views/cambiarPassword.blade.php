@@ -42,9 +42,9 @@
                 @enderror
             </div>
 
-            <div class="text-center">
+            <div class="text-center actividad-estilos">
                 <button type="submit" class="button-password btn btn-danger m-2 ">Actualizar Contraseña</button>
-                <a href="/perfil">Cancelar</a>
+                <a href="/perfil" class="btn a-volver">Cancelar</a>
             </div>
         </form>
     </div>
