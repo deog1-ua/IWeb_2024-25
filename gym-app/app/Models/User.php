@@ -100,6 +100,6 @@ class User extends Authenticatable
 
     public function reserva()
     {
-        return $this->hasMany(Reserva::class);
+        return $this->hasMany(Reserva::class, 'usuario_id');
     }
 }

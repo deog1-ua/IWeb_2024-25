@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Actividad;
 use App\Models\Horario;
+use App\Models\User;
 
 class ActividadController extends Controller
 {
@@ -30,6 +31,21 @@ class ActividadController extends Controller
         }
 
         return view('mostrar.detalleActividad', compact('actividad'));
+    }
+
+    public function showReservas($actividadId)
+    {
+        // Verificar que la actividad existe
+        $actividad = Actividad::findOrFail($actividadId);
+
+        // Obtener usuarios que han reservado esta actividad
+        $usuarios = User::whereHas('reserva', function ($query) use ($actividadId) {
+            $query->whereHas('horario', function ($q) use ($actividadId) {
+                $q->where('actividad_id', $actividadId);
+            });
+        })->get();
+
+        return view('mostrar.mostrarReservas', compact('actividad', 'usuarios'));
     }
 
 }
