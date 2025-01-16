@@ -25,7 +25,8 @@ class TpvService
      * @param string $callbackUrl
      * @return array
      */
-    public function createPayment(float $amount, string $currency, string $description, string $reference, string $callbackUrl)
+    public function createPayment(float $amount, string $currency, string $description, 
+    string $reference, string $callbackUrl)
     {
         $data = [
             'amount' => $amount,
