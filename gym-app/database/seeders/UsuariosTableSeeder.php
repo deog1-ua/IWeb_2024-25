@@ -144,7 +144,7 @@ class UsuariosTableSeeder extends Seeder
                 'dni' => '56789012M',
                 'nombre' => 'Paca María',
                 'apellidos' => 'López García',
-                'nombre_usuario' => 'socio3',
+                'nombre_usuario' => 'paca33',
                 'email' => 'laPaca@gmail.com',
                 'fecha_nacimiento' => '1998-12-15',
                 'telefono' => '600111222',

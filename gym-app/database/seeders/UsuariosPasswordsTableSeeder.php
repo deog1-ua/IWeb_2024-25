@@ -41,6 +41,10 @@ class UsuariosPasswordsTableSeeder extends Seeder
                 'usuario_id' => 6, 
                 'password' => Hash::make('1234')
             ],
+            [
+                'usuario_id' => 7, 
+                'password' => Hash::make('1234')
+            ],
         ];
 
         DB::table('usuarios_passwords')->insert($usuarios_passwords);

@@ -36,7 +36,7 @@
                         <td>{{ $reserva->horario->actividad->nombre }}</td>
                         <td>{{ \Carbon\Carbon::parse($reserva->horario->fecha)->format('d/m/Y') }}</td>
                         <td>de {{ \Carbon\Carbon::parse($reserva->horario->hora_inicio)->format('H:i') }} a {{ \Carbon\Carbon::parse($reserva->horario->hora_fin)->format('H:i') }}</td>
-                        <td>{{ $reserva->horario->sala }}</td>
+                        <td>{{ $reserva->horario->sala->nombre }}</td>
                         <td>{{  \Carbon\Carbon::parse($reserva->fecha)->format('d/m/Y') }}</td>
                         @if (Auth::user()->tipo_usuario == "socio")
                             <td>

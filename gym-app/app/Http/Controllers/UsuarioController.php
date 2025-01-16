@@ -87,7 +87,7 @@ class UsuarioController extends Controller
         $user->bloqueado = 0;
         $user->save();
 
-        return redirect()->route('usuarios.index');
+        return redirect()->route('usuarios.index')->with('message', 'Usuario desbloqueado correctamente.');
     }
 
     public function aprobar($id)
