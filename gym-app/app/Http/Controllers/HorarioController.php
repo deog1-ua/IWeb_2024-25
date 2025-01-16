@@ -42,7 +42,11 @@ class HorarioController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'fecha' => 'required|date',
+            'fecha' => ['required', 'date', function ($attribute, $value, $fail) {
+                if (strtotime($value) < strtotime(date('Y-m-d'))) {
+                    $fail('La fecha no puede ser anterior a la fecha actual.');
+                }
+            }],
             'hora_inicio' => 'required|date_format:H:i',
             'hora_fin' => 'required|date_format:H:i|after:hora_inicio',
             'sala_id' => 'required|exists:salas,id',
