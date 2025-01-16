@@ -59,7 +59,7 @@
                         <h5 class="text-dark mb-1"><strong>Fecha:</strong> {{ ucfirst($fechaFormateada) }}</h5>
                         <p class="mb-1">
                             <strong>Hora:</strong> {{ $horaInicioFormateada }} - {{ $horaFinFormateada }} <br>
-                            <strong>Sala:</strong> {{ $horario->sala }}
+                            <strong>Sala:</strong> {{ $horario->sala->nombre }}
                         </p>
                     </div>
                     @if(Auth::check())

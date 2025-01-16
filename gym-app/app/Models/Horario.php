@@ -19,22 +19,11 @@ class Horario extends Model
         'hora_inicio',
         'hora_fin',
         'fecha',
-        'sala',
         'aforo',
-        'actividad_id'
+        'actividad_id',
+        'sala_id',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'fecha' => 'date',
-        ];
-    }
 
     public function reserva()
     {
@@ -44,6 +33,11 @@ class Horario extends Model
     public function actividad() {
         
         return $this->belongsTo(Actividad::class, 'actividad_id');
+    }
+
+    public function sala() {
+        
+        return $this->belongsTo(Sala::class, 'sala_id');
     }
 
 }

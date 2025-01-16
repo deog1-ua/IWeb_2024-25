@@ -78,7 +78,7 @@ class UsuarioController extends Controller
         $user->bloqueado = 1;
         $user->save();
 
-        return redirect()->route('usuarios.index');
+        return redirect()->route('usuarios.index')->with('message', 'Usuario bloqueado correctamente.');
     }
 
     public function desbloquear($id)
@@ -97,7 +97,7 @@ class UsuarioController extends Controller
         $user->activo = 1;
         $user->save();
 
-        return redirect()->route('usuarios.index');
+        return redirect()->route('usuarios.index')->with('message', 'Usuario aprobado correctamente.');
     }
 
     public function rechazar($id)
@@ -107,7 +107,7 @@ class UsuarioController extends Controller
             $user->delete();  // Elimina al usuario de la base de datos
         }
 
-        return redirect()->route('usuarios.index');
+        return redirect()->route('usuarios.index')->with('message', 'Usuario rechazado correctamente.');
     }
 
 }

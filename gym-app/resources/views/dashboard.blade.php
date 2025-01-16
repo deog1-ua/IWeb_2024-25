@@ -25,9 +25,9 @@
                 <p class="card-text">Has accedida a la plataforma del monitor para gestionar tus clases y horarios.</p>
                 <hr class="my-4" style="border: 0.5px solid #ccc;">
                 <div class="d-flex flex-wrap justify-content-center">
-                    <a href="#" class="btn btn-outline-danger m-2">Mi Calendario</a>
                     <a href="{{ url('/perfil') }}" class="btn btn-outline-danger m-2">Mi Perfil</a>
-                    <a href="{{ route('actividades.index') }}" class="btn btn-outline-danger m-2">Mis Actividades</a>
+                    <a class="btn btn-outline-danger m-2" href="/mis-actividades"> Mis Actividades</a>
+                    <a href="{{ route('actividades.index') }}" class="btn btn-outline-danger m-2">Gestionar Actividades</a>
                 </div>
             </div>
         </div>

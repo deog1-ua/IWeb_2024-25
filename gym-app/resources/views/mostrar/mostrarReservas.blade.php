@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container my-5">
-    <h3 class="text-center mb-4">Reservas para la Actividad: {{ $actividad->nombre }}</h3>
+    <h3 class="text-center mb-4 color-rojo">Reservas para la Actividad: {{ $actividad->nombre }}</h3>
 
     @if($usuarios->isEmpty())
         <p class="text-center text-muted">No hay reservas para esta actividad.</p>
@@ -29,8 +29,8 @@
         </table>
     @endif
 
-    <div class="mt-4 text-center">
-        <a href="/mis-actividades/{{ $actividad->id }}" class="btn btn-secondary">
+    <div class="mt-4 text-center actividad-estilos">
+        <a href="/mis-actividades/{{ $actividad->id }}" class="btn a-volver">
              Volver a la Actividad
         </a>
     </div>

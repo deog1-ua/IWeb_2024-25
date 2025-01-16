@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="card shadow-sm">
-                <div class="card-header bg-danger text-white text-center">
+                <div class="card-header text-center mb-4">
                     <h3>Editar Actividad</h3>
                 </div>
                 <div class="card-body">
@@ -60,7 +60,7 @@
                                 <option value="" selected disabled>Selecciona un horario</option>
                                 @foreach ($horarios as $horario)
                                     <option value="{{ $horario->id }}" {{ optional($actividad->horario->first())->id == $horario->id ? 'selected' : '' }}>
-                                        {{ $horario->hora_inicio }} - {{ $horario->hora_fin }} (Sala: {{ $horario->sala }}, Aforo: {{ $horario->aforo }})
+                                        {{ $horario->hora_inicio }} - {{ $horario->hora_fin }} (Sala: {{ $horario->sala->nombre }}, Aforo: {{ $horario->aforo }})
                                     </option>
                                 @endforeach
                             </select>
@@ -72,8 +72,12 @@
                             <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*">
                             <p class="text-muted">Deja este campo vacío si no deseas cambiar la imagen actual.</p>
                         </div>
-
-                        <button type="submit" class="btn btn-danger w-100">Actualizar Actividad</button>
+                        <div class="mt-4 text-center actividad-estilos">
+                            <a href="{{ route('actividades.show', $actividad->id) }}" class="btn a-volver me-2">
+                                Cancelar
+                            </a>
+                            <button type="submit" class="btn">Actualizar Actividad</button>
+                        </div>
                     </form>
                 </div>
             </div>

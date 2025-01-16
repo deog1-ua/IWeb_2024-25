@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="card shadow-sm">
-                <div class="card-header bg-danger text-white text-center">
+                <div class="card-header text-center">
                     <h3>Detalles de la Actividad</h3>
                 </div>
                 <div class="card-body">
@@ -26,9 +26,9 @@
                         <ul class="list-group">
                             @foreach($actividad->horario as $horario)
                                 <li class="list-group-item">
-                                    <strong>Fecha:</strong> {{ $horario->fecha->format('Y-m-d') }} <br>
+                                    <strong>Fecha:</strong> {{ $horario->fecha }} <br>
                                     <strong>Hora:</strong> {{ $horario->hora_inicio }} - {{ $horario->hora_fin }} <br>
-                                    <strong>Sala:</strong> {{ $horario->sala }} <br>
+                                    <strong>Sala:</strong> {{ $horario->sala->nombre }} <br>
                                     <strong>Aforo:</strong> {{ $horario->aforo }}
                                 </li>
                             @endforeach
@@ -37,19 +37,19 @@
                         <p class="text-muted">No hay horarios asignados a esta actividad.</p>
                     @endif
 
-                    <div class="mt-4 text-center">
-                        <a href="{{ route('actividades.index') }}" class="btn btn-secondary me-2">
-                            <i class="fas fa-bars"></i> Volver al Listado
+                    <div class="mt-4 text-center actividad-estilos">
+                        <a href="{{ route('actividades.index') }}" class="btn a-volver me-2">
+                            Volver al Listado
                         </a>
-                        <form action="{{ route('actividades.destroy', $actividad->id) }}" method="POST" class="d-inline">
+                        <form action="{{ route('actividades.destroy', $actividad->id) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta actividad? Esta acción no se puede deshacer.');">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger me-2">
-                                <i class="fas fa-trash"></i> Eliminar
+                            <button type="submit" class="btn btn-danger me-2 button-general-transparente">
+                                Eliminar
                             </button>
                         </form>
-                        <a href="{{ route('actividades.edit', $actividad->id) }}" class="btn btn-primary">
-                            <i class="fas fa-pencil-alt"></i> Editar
+                        <a href="{{ route('actividades.edit', $actividad->id) }}" class="btn">
+                            Editar
                         </a>
                     </div>
                 </div>
