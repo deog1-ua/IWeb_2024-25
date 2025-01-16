@@ -9,6 +9,7 @@ use App\Http\Controllers\ReservasController;
 use App\Http\Controllers\ActividadController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\WalletController;
+use App\Http\Controllers\PaymentController;
 
 
 Route::get('/', function () {
@@ -115,4 +116,12 @@ Route::middleware(['role:admin,monitor,socio'])->group(function () {
         return view('cambiarPassword');
     });
     Route::post('/perfil/modificar-password', [PerfilController::class, 'modificarPassword']);
+
+    Route::get('/pago', function () {
+        return view('formulariopago');
+    })->name('payment.form');
+
+    Route::post('/recargar', [PaymentController::class, 'recargar'])->name('recargar');    
+    Route::get('/callback', [PaymentController::class, 'callback'])->name('callback');
+
 });
