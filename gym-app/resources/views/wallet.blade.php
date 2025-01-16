@@ -14,6 +14,13 @@
             margin: 0;
             padding: 0;
         }
+        .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #b00000;
+            margin-bottom: 20px;
+        }
+
 
         .title {
             font-size: 1.5rem;
@@ -110,6 +117,7 @@
             margin-top: 20px;
             font-size: 2.5rem;
         }
+
     </style>
 </head>
 

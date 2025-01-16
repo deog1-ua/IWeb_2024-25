@@ -59,7 +59,7 @@
                         <h5 class="text-dark mb-1"><strong>Fecha:</strong> {{ ucfirst($fechaFormateada) }}</h5>
                         <p class="mb-1">
                             <strong>Hora:</strong> {{ $horaInicioFormateada }} - {{ $horaFinFormateada }} <br>
-                            <strong>Sala:</strong> {{ $horario->sala }}
+                            <strong>Sala:</strong> {{ $horario->sala->nombre }}
                         </p>
                     </div>
                     @if(Auth::check())
@@ -81,6 +81,7 @@
                                     <form method="POST" action="{{ route('reservar') }}">
                                         @csrf
                                         <input type="hidden" name="horario_id" value="{{ $horario->id }}">
+                                        <input type="hidden" name="precio" value="{{ $horario->actividad->importe }}">
                                         <button type="submit" class="btn btn-danger btn-sm shadow-sm mt-1">
                                             Reservar
                                         </button>
@@ -111,6 +112,6 @@
         if (errorAlert) {
             errorAlert.style.display = 'none';
         }
-    }, 3000); // 3000 milisegundos = 3 segundos
+    }, 5000); // 3000 milisegundos = 3 segundos
 </script>
 @endsection

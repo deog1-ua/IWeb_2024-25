@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reserva;
+use App\Models\User;
+use App\Models\Horario;
 
 
 class ReservasController extends Controller
@@ -38,7 +40,15 @@ class ReservasController extends Controller
         $reserva = Reserva::where('usuario_id', auth()->user()->id)
                     ->where('horario_id', $id)
                     ->first();
+        
+        $horario = Horario::find($id);
+        if($horario->fecha < date('Y-m-d')){
+            return redirect()->back()->with('error', 'No puedes cancelar una reserva de un horario pasado');
+        }
         if ($reserva) {
+            User::where('id', auth()->user()->id)->update([
+                'saldo' => auth()->user()->saldo + $horario->actividad->importe,
+            ]);
             $reserva->delete();
 
             return redirect()->back()->with('success', 'Reserva cancelada correctamente');
@@ -51,15 +61,26 @@ class ReservasController extends Controller
 
     public function reservar(Request $request)
     {
-        $request->validate([
-            'horario_id' => 'required|exists:horarios,id',
-        ]);
+        if(auth()->user()->saldo <= $request->precio){
+            return redirect()->back()->with('error', 'No tienes saldo suficiente para realizar la reserva');
+        }
+        else{
+            $request->validate([
+                'horario_id' => 'required|exists:horarios,id',
+            ]);
+    
+            $reserva = Reserva::create([
+                'usuario_id' => auth()->user()->id,
+                'horario_id' => $request->horario_id,
+            ]);
 
-        $reserva = Reserva::create([
-            'usuario_id' => auth()->user()->id,
-            'horario_id' => $request->horario_id,
-        ]);
+            User::where('id', auth()->user()->id)->update([
+                'saldo' => auth()->user()->saldo - $request->precio,
+            ]);
+    
+            return redirect()->back()->with('success', 'Reserva realizada correctamente');
 
-        return redirect()->back()->with('success', 'Reserva realizada correctamente');
+        }
+
     }
 }

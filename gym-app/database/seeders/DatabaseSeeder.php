@@ -36,6 +36,10 @@ class DatabaseSeeder extends Seeder
         // Mostramos información por consola
         $this->command->info('Actividades table seeded!');
 
+        $this->call(SalasSeeder::class);
+        // Mostramos información por consola
+        $this->command->info('Salas table seeded!');
+
         $this->call(HorarioSeeder::class);
         // Mostramos información por consola
         $this->command->info('Horarios table seeded!');

@@ -4,6 +4,22 @@
 <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-lg-10">
+            @if(session('message'))
+                <div class="alert alert-success text-success text-success-emphasis alert-dismissible fade show" role="alert">
+                    {{ session('message') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+            @if ($errors->any())
+                <div class="alert alert-danger text-danger text-danger-emphasis alert-dismissible fade show mt-2" role="alert">
+                    <ul class="mb-0" style="list-style: none; padding-left: 0;">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <h2 class="text-center mb-4">Listado de Actividades</h2>
             @if($actividades->isEmpty())
                 <p class="text-center text-muted">No hay actividades disponibles.</p>
@@ -27,7 +43,7 @@
                                         @endif
                                     </p>
                                     @if($actividad->horario->isNotEmpty())
-                                        <p class="mb-0 text-muted">Fecha: {{ $actividad->horario->sortBy('fecha')->first()->fecha->format('Y-m-d') }}</p>
+                                        <p class="mb-0 text-muted">Fecha: {{ $actividad->horario->sortBy('fecha')->first()->fecha }}</p>
                                     @else
                                         <p class="mb-0 text-muted">Fecha: No asignada</p>
                                     @endif
@@ -36,7 +52,7 @@
 
                             <!-- Botones de acción -->
                             <div>
-                                <a href="{{ route('actividades.show', $actividad->id) }}" class="btn btn-danger btn-sm">Detalles</a>
+                                <a href="{{ route('actividades.show', $actividad->id) }}" class="btn btn-danger btn-sm a-general-detalles">Detalles</a>
                             </div>
                         </li>
                     @endforeach
@@ -45,9 +61,7 @@
 
              <!-- Botón para ir a la página de crear actividades -->
              <div class="mt-4 text-center">
-                <a href="{{ route('actividades.create') }}" class="btn btn-danger">
-                    <i class="fas fa-plus"></i> Crear Nueva Actividad
-                </a>
+                <a href="{{ route('actividades.create') }}" class="btn btn-danger a-general">Crear Nueva Actividad</a>
             </div>
         </div>
     </div>
