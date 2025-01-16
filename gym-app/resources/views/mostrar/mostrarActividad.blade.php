@@ -28,6 +28,7 @@
     <hr>
     @php
         use Carbon\Carbon;
+        $contador = 0;
     @endphp
     <div style="margin-top: 30px; margin-bottom: 50px;"> 
         <h3 class="titulo4">¿Cuándo puedo asistir?</h3>
@@ -49,9 +50,11 @@
                 @endif
 
                 @foreach($actividad->horario as $horario)
+                @if($horario->fecha >= Carbon::now()->toDateString())
                     <li class="list-group-item d-flex justify-content-between align-items-center border rounded shadow-sm p-3 mb-2">
                     <div>
                         @php
+                            $contador++;
                             $fechaFormateada = Carbon::parse($horario->fecha)->locale('es')->isoFormat('dddd D, MMMM [de] YYYY');
                             $horaInicioFormateada = \Carbon\Carbon::parse($horario->hora_inicio)->format('H:i') . 'h';
                             $horaFinFormateada = \Carbon\Carbon::parse($horario->hora_fin)->format('H:i') . 'h';
@@ -91,8 +94,14 @@
                         @endif
                     @endif
                     </li>
+                @endif
+
+
                 @endforeach
             </ul>
+        @if($contador == 0)
+            <p class="text-muted text-center mt-4">No hay horarios asignados a esta actividad.</p>
+        @endif
         @else
             <p class="text-muted text-center mt-4">No hay horarios asignados a esta actividad.</p>
         @endif
