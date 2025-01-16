@@ -73,6 +73,11 @@ class ReservasController extends Controller
         if(auth()->user()->saldo <= $request->precio){
             return redirect()->back()->with('error', 'No tienes saldo suficiente para realizar la reserva');
         }
+        $horario = Horario::find($request->horario_id);
+        $numreservas = Reserva::where('horario_id', $request->horario_id)->count();
+        if ($numreservas >= $horario->aforo){
+            return redirect()->back()->with('error', 'No quedan plazas disponibles para este horario');
+        }
         else{
             $request->validate([
                 'horario_id' => 'required|exists:horarios,id',
