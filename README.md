@@ -42,3 +42,15 @@ npm run dev
 php artisan serve
 ```
 
+Ejecutar migraciones
+```
+php artisan migrate:fresh --seed
+```
+
+Poner imágenes:
+
+copiar carpeta `images` de `public` a la carpeta `storage\public`
+
+Después ejecutamos 
+`php artisan storage:link`
+
