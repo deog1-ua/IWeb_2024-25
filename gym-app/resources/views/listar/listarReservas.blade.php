@@ -3,6 +3,20 @@
 @section('content')
 <div class="container">
     <h1 class="titulo1">Listado de Reservas</h1>
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" id="success-alert" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" id="error-alert" role="alert">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
 
     @if($reservas->isEmpty())
     <div style="margin-bottom:50px">
@@ -49,4 +63,20 @@
         </table>
     @endif
 </div>
+        
+<script>
+    // Función para ocultar las alertas después de 5 segundos
+    setTimeout(function() {
+        const successAlert = document.getElementById('success-alert');
+        const errorAlert = document.getElementById('error-alert');
+
+        if (successAlert) {
+            successAlert.style.display = 'none';
+        }
+
+        if (errorAlert) {
+            errorAlert.style.display = 'none';
+        }
+    }, 5000); // 3000 milisegundos = 3 segundos
+</script>
 @endsection

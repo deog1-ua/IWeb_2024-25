@@ -115,7 +115,7 @@
                 <tbody>
                     @foreach($pagos as $pago)
                         <tr>
-                            <td>{{ $pago->fecha->format('d/m/Y') }}</td>
+                            <td>{{ $pago->fecha }}</td>
                             <td>{{ number_format($pago->cantidad, 2) }} €</td>
                         </tr>
                     @endforeach
