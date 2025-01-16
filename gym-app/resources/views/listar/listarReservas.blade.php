@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="container">
+    @if(session('success'))
+        <div class="alert alert-success text-success text-success-emphasis alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <h1 class="titulo1">Listado de Reservas</h1>
     @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show" id="success-alert" role="alert">

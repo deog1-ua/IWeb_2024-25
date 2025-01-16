@@ -61,7 +61,7 @@ Route::get('/login', function () {
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', function () {
     auth()->logout();
-    return redirect('/');
+    return redirect('/')->with('message', 'Sesión cerrada correctamente');
 })->name('logout');
 
 Route::get('/registro', function () {
