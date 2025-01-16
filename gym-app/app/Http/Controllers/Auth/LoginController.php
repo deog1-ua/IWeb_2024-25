@@ -33,14 +33,14 @@ class LoginController extends Controller
                 'pais' => 'required|string|max:255',
                 'provincia' => 'required|string|max:255',
                 'municipio' => 'required|string|max:255',
-                'cp' => 'required|string|max:5',
+                'cp' => 'required|string|regex:/^\d{5}$/',
                 'direccion_envio' => 'required|string|max:255',
             ]
         );
 
         $datos_password = $request->validate(
             [
-                'password' => 'required|string|min:8',
+                'password' => 'required|string|min:8|regex:/[A-Z]/|regex:/[a-z]/|regex:/[0-9]/|regex:/[@$!%*?&]/',
             ]
         );
 
@@ -72,7 +72,7 @@ class LoginController extends Controller
     public function login(Request $request) {
         $datos = $request->validate(
             [
-                'email' => 'required|string',
+                'email' => 'required|email',
                 'password' => 'required|string',
             ]
         );
