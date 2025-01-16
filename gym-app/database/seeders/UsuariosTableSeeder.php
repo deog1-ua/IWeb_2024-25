@@ -42,7 +42,7 @@ class UsuariosTableSeeder extends Seeder
                 'nombre' => 'Daniela',
                 'apellidos' => 'Orellana',
                 'nombre_usuario' => 'Dani',
-                'email' => 'dani@gmailcom',
+                'email' => 'dani@gmail.com',
                 'fecha_nacimiento' => '1985-05-15',
                 'telefono' => '600333444',
                 'genero' => 'mujer',
