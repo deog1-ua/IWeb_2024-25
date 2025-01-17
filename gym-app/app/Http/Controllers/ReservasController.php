@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Reserva;
 use App\Models\User;
 use App\Models\Horario;
+use App\Models\Pago;
 
 
 class ReservasController extends Controller
@@ -49,7 +50,15 @@ class ReservasController extends Controller
             User::where('id', auth()->user()->id)->update([
                 'saldo' => auth()->user()->saldo + $horario->actividad->importe,
             ]);
+
+            Pago::create([
+                'usuario_id' => auth()->user()->id,
+                'cantidad'=> -1*$horario->actividad->importe,
+                'fecha' => now(),
+            ]);
+
             $reserva->delete();
+
 
             return redirect()->back()->with('success', 'Reserva cancelada correctamente');
         }
@@ -64,6 +73,11 @@ class ReservasController extends Controller
         if(auth()->user()->saldo <= $request->precio){
             return redirect()->back()->with('error', 'No tienes saldo suficiente para realizar la reserva');
         }
+        $horario = Horario::find($request->horario_id);
+        $numreservas = Reserva::where('horario_id', $request->horario_id)->count();
+        if ($numreservas >= $horario->aforo){
+            return redirect()->back()->with('error', 'No quedan plazas disponibles para este horario');
+        }
         else{
             $request->validate([
                 'horario_id' => 'required|exists:horarios,id',
@@ -72,6 +86,13 @@ class ReservasController extends Controller
             $reserva = Reserva::create([
                 'usuario_id' => auth()->user()->id,
                 'horario_id' => $request->horario_id,
+            ]);
+        
+            // Crear un nuevo pago
+            Pago::create([
+                'usuario_id' => auth()->user()->id,
+                'cantidad'=> $request->precio,
+                'fecha' => now(),
             ]);
 
             User::where('id', auth()->user()->id)->update([

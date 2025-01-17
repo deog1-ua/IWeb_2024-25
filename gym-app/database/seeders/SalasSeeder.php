@@ -20,6 +20,9 @@ class SalasSeeder extends Seeder
             ['nombre' => 'Sala 3'],
             ['nombre' => 'Sala 4'],
             ['nombre' => 'Sala 5'],
+            ['nombre' => 'Sala 6'],
+            ['nombre' => 'Sala 7'],
+            ['nombre' => 'Sala 8'],
         ];
 
         DB::table('salas')->insert($salas);

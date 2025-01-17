@@ -28,7 +28,7 @@ class HorarioSeeder extends Seeder
                     'fecha' => '2025-02-01',
                     'sala_id' => 1,
                     'aforo' => 20,
-                    'actividad_id' => 1,
+                    'actividad_id' => null,
                 ],
                 [
                     'hora_inicio' => '11:00:00',
@@ -140,7 +140,7 @@ class HorarioSeeder extends Seeder
                     'fecha' => '2025-01-20',
                     'sala_id' => 1,
                     'aforo' => 20,
-                    'actividad_id' => 7,
+                    'actividad_id' => null,
                 ],
                 [
                     'hora_inicio' => '10:00:00',
@@ -164,7 +164,7 @@ class HorarioSeeder extends Seeder
                     'fecha' => '2025-01-22',
                     'sala_id' => 3,
                     'aforo' => 25,
-                    'actividad_id' => 9,
+                    'actividad_id' => null,
                 ],
                 [
                     'hora_inicio' => '16:00:00',
@@ -172,7 +172,7 @@ class HorarioSeeder extends Seeder
                     'fecha' => '2025-01-22',
                     'sala_id' => 3,
                     'aforo' => 25,
-                    'actividad_id' => 9,
+                    'actividad_id' => null,
                 ],
                 [
                     'hora_inicio' => '12:00:00',
@@ -188,7 +188,7 @@ class HorarioSeeder extends Seeder
                     'fecha' => '2025-01-23',
                     'sala_id' => 4,
                     'aforo' => 12,
-                    'actividad_id' => 10,
+                    'actividad_id' => null,
                 ]
             ];
             DB::table('horarios')->insert($horarios);
