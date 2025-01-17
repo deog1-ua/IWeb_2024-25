@@ -56,24 +56,6 @@ copiar carpeta `images` de `public` a la carpeta `storage\public`
 Después ejecutamos 
 `php artisan storage:link`
 
-```vite.config.js:
-import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
-
-export default defineConfig({
-    server: {
-        host: '0.0.0.0', // Escucha en todas las interfaces
-        hmr: {
-            host: '192.168.1.100', // Sustituye con la IP de tu máquina anfitriona
-        },
-    },
-    plugins: [
-        laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
-            refresh: true,
-        }),
-    ],
-});```
 
 
 
