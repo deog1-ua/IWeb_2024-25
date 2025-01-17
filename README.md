@@ -32,6 +32,8 @@ npm i
 
 y ejecutar dos terminales 
 
+cambia el nombre del `.env`
+
 - Terminal 1
 ```
 npm run dev
