@@ -3,7 +3,7 @@ Proyecto grupo 10 – Gimnasio
 
 ## Despliegue
 ```bash
-docker-composer up
+docker-compose up
 ```
 
 Luego mirar variables de entorno `node` y de `php`
