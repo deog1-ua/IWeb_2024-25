@@ -11,7 +11,6 @@
                         <img src="{{asset('storage/images/' . $actividad->imagen) }}" class="card-img-top" alt="{{ $actividad->nombre }}">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title text-center">{{ $actividad->nombre }}</h5>
-                            <p class="card-text text-center">Con: {{ $actividad->user->nombre }} {{$actividad->user->apellidos}}</p>
                             <div class="mt-auto d-flex justify-content-center">
                                 <a href="/mis-actividades/{{ $actividad->id }}" class="btn btn-primary btn-block">Detalles</a>
                             </div>

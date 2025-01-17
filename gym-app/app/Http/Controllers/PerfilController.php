@@ -46,7 +46,7 @@ class PerfilController extends Controller
                 'pais' => 'required|string|max:255',
                 'provincia' => 'required|string|max:255',
                 'municipio' => 'required|string|max:255',
-                'cp' => 'required|string|max:5',
+                'cp' => 'required|string|regex:/^\d{5}$/',
                 'direccion_envio' => 'required|string|max:255',
             ]
         );
