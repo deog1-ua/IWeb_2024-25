@@ -47,9 +47,9 @@ Route::get('/registro', function () {
 });
 Route::post('/registro', [LoginController::class, 'registro']);
 
-
 Route::get('/horarios-por-fecha', [HorarioController::class, 'getHorariosPorFecha']);
 
+// VISTAS VISIBLES SOLO PARA EL ADMIN
 Route::middleware(['role:admin'])->group(function () {
     // Poner aquí las rutas que solo puede ver el administrador
     Route::get('/listado-reservas', [ReservasController::class, 'listReservas']);
@@ -65,6 +65,7 @@ Route::middleware(['role:admin'])->group(function () {
     Route::post('/horarios', [HorarioController::class, 'store'])->name('horarios.store');
 });
 
+// VISTAS VISIBLES SOLO PARA EL SOCIO
 Route::middleware(['role:socio'])->group(function () {
     // Poner aquí las rutas que solo puede ver el socio
     Route::get('/mis-reservas', [ReservasController::class, 'listReservasByUser'])->name('mis-reservas');
@@ -78,6 +79,7 @@ Route::middleware(['role:socio'])->group(function () {
     Route::post('/perfil/dar-baja', [PerfilController::class, 'darBaja']);
 });
 
+// VISTAS VISIBLES SOLO PARA EL MONITOR
 Route::middleware(['role:monitor'])->group(function () {
     // Poner aquí las rutas que pueden ver el administrador, el monitor y el socio
     Route::get('/mis-actividades', [ActividadController::class, 'listbyMonitor']);
@@ -86,6 +88,7 @@ Route::middleware(['role:monitor'])->group(function () {
 
 });
 
+// VISTAS VISIBLES SOLO PARA EL ADMIN Y EL MONITOR
 Route::middleware(['role:admin,monitor'])->group(function () {
     Route::get('/actividades/create', [CrearActividadController::class, 'create'])->name('actividades.create');
     Route::post('/actividades', [CrearActividadController::class, 'store'])->name('actividades.store');
@@ -96,6 +99,7 @@ Route::middleware(['role:admin,monitor'])->group(function () {
     Route::get('/actividades/{id}', [CrearActividadController::class, 'show'])->name('actividades.show');
 });
 
+// VISTAS VISIBLES PARA EL ADMIN, EL MONITOR Y EL SOCIO
 Route::middleware(['role:admin,monitor,socio'])->group(function () {
     Route::get('/perfil',[PerfilController::class, 'verPerfil']);
     Route::get('/perfil/modificar', [PerfilController::class, 'modificar']);

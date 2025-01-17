@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Direccion;
 use App\Models\Password;
+use App\Rules\ValidDni;
 
 class LoginController extends Controller
 {
@@ -14,7 +15,7 @@ class LoginController extends Controller
 
         $datos_usuario = $request->validate(
             [
-                'dni' => 'required|string|max:10|unique:usuarios',
+                'dni' => ['required', 'string', new ValidDni, 'max:10', 'unique:usuarios'],
                 'nombre' => 'required|string|max:255',
                 'apellidos' => 'required|string|max:255',
                 'nombre_usuario' => 'required|string|max:255|unique:usuarios',
@@ -80,7 +81,6 @@ class LoginController extends Controller
         $user = User::where('email', $datos['email'])->first();
         if ($user) {
             
-            //$password = Password::where('usuario_id', $user->id)->latest();
             $password = $user->password;
             if ($password && password_verify($datos['password'], $password)) {
                 if ($user->activo) {
