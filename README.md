@@ -3,7 +3,7 @@ Proyecto grupo 10 – Gimnasio
 
 ## Despliegue
 ```bash
-docker-composer up
+docker-compose up
 ```
 
 Luego mirar variables de entorno `node` y de `php`
@@ -31,6 +31,8 @@ npm i
 ```
 
 y ejecutar dos terminales 
+
+cambia el nombre del `.env`
 
 - Terminal 1
 ```
