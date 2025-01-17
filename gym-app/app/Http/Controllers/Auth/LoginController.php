@@ -83,6 +83,9 @@ class LoginController extends Controller
             
             $password = $user->password;
             if ($password && password_verify($datos['password'], $password)) {
+                if ($user->bloqueado) {
+                    return redirect()->back()->withErrors(['general' => 'Tu cuenta está bloqueada. Contacta con el administrador.']);
+                }
                 if ($user->activo) {
                     auth()->login($user);
                     return view('dashboard', ['user' => $user]);
