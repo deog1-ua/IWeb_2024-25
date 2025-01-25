@@ -22,11 +22,11 @@ class ReservaSeeder extends Seeder
             [
 
                 'usuario_id' => 5,
-                'horario_id' => 1,
+                'horario_id' => 3,
             ],
             [
                 'usuario_id' => 6,
-                'horario_id' => 1,
+                'horario_id' => 3,
             ],
             [
                 'usuario_id' => 6,

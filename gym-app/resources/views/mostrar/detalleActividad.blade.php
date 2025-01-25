@@ -5,6 +5,22 @@
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="card shadow-sm">
+                @if(session('message'))
+                    <div class="alert alert-success text-success text-success-emphasis alert-dismissible fade show" role="alert">
+                        {{ session('message') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger text-danger text-danger-emphasis alert-dismissible fade show mt-2" role="alert">
+                        <ul class="mb-0" style="list-style: none; padding-left: 0;">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
                 <div class="card-header text-center">
                     <h3>Detalles de la Actividad</h3>
                 </div>
@@ -37,19 +53,13 @@
                         <p class="text-muted">No hay horarios asignados a esta actividad.</p>
                     @endif
 
+                    <hr class="mt-4">
                     <div class="mt-4 text-center actividad-estilos">
-                        <a href="{{ route('actividades.index') }}" class="btn a-volver me-2">
+                        <a href="/mis-actividades" class="btn me-2 a-volver">
                             Volver al Listado
                         </a>
-                        <form action="{{ route('actividades.destroy', $actividad->id) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta actividad? Esta acción no se puede deshacer.');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger me-2 button-general-transparente">
-                                Eliminar
-                            </button>
-                        </form>
-                        <a href="{{ route('actividades.edit', $actividad->id) }}" class="btn">
-                            Editar
+                        <a href="{{ route('actividades.reservas', $actividad->id) }}" class="btn btn-primary">
+                            Mostrar Reservas
                         </a>
                     </div>
                 </div>

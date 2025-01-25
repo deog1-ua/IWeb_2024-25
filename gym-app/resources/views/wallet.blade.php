@@ -21,7 +21,12 @@
             margin-bottom: 20px;
         }
 
-
+        .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #b00000;
+            margin-bottom: 20px;
+        }
         header {
             width: 100%;
             background-color: #b00000;
@@ -130,20 +135,23 @@
 
         <div class="recharge-container">
             <div class="title">Recargas</div>
-            <div class="recharge-amount">
-                <label for="amount">Importe para recargar:</label>
-                <select id="amount" name="amount">
-                    <option value="10">10.00</option>
-                    <option value="20.00">20.00</option>
-                    <option value="30.00">30.00</option>
-                    <option value="40.00">40.00</option>
-                    <option value="50.00">50.00</option>
-                    <option value="60.00">60.00</option>
-                    <option value="70.00">70.00</option>
-                    <option value="80.00">80.00</option>
-                </select>
-            </div>
-            <button class="recharge-button">Recargar</button>
+            <form action="{{ route('recargar') }}" method="POST">
+                @csrf
+                <div class="recharge-amount">
+                    <label for="amount">Importe para recargar:</label>
+                    <select id="amount" name="amount">
+                        <option value="10">10.00</option>
+                        <option value="20.00">20.00</option>
+                        <option value="30.00">30.00</option>
+                        <option value="40.00">40.00</option>
+                        <option value="50.00">50.00</option>
+                        <option value="60.00">60.00</option>
+                        <option value="70.00">70.00</option>
+                        <option value="80.00">80.00</option>
+                    </select>
+                </div>
+                <button type="submit" class="recharge-button">Recargar</button>
+            </form>
         </div>
     </div>
 </body>

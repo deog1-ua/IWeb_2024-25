@@ -24,7 +24,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/actividades-publico">Servicios</a>
+                <a class="nav-link" href="/actividades-publico">Actividades</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/centros">Centros</a>
@@ -77,9 +77,9 @@
                             
                             @if (Auth::user()->tipo_usuario == "monitor")
                                 <a class="dropdown-item" href="/actividades" style="margin-bottom: 10px;">
-                                    Actividades
+                                    Gestionar Actividades
                                 </a>
-                                <a class="dropdown-item" href="{{ route('actividades.index') }}" style="margin-bottom: 10px;">
+                                <a class="dropdown-item" href="/mis-actividades" style="margin-bottom: 10px;">
                                     Mis Actividades
                                 </a>
                             @endif
@@ -128,10 +128,10 @@
       </ul>
     </div>
     <div class="col-sm-6">
-      <h5>About</h5>
+      <h5>Páginas</h5>
       <ul class="list-unstyled text-small">
         <li><a class="link-secondary" href="/">Inicio</a></li>
-        <li><a class="link-secondary" href="/actividades-publico">Servicios</a></li>
+        <li><a class="link-secondary" href="/actividades-publico">Actividades</a></li>
         <li><a class="link-secondary" href="/centros">Centros</a></li>
         <li><a class="link-secondary" href="/contacto">Contacto</a></li>
         <li><a class="link-secondary" href="/sobre-nosotros">Sobre Nosotros</a></li>

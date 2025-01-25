@@ -56,7 +56,7 @@ class CrearActividadController extends Controller
 
         Horario::where('id', $request->id_horario)->update(['actividad_id' => $actividad->id]);
 
-        return redirect()->route('actividades.index')->with('success', 'Actividad creada correctamente');
+        return redirect()->route('actividades.index')->with('message', 'Actividad creada correctamente');
     }
 
     public function index()
@@ -159,7 +159,7 @@ class CrearActividadController extends Controller
             Horario::where('id', $request->id_horario)->update(['actividad_id' => $actividad->id]);
         }
 
-        return redirect()->route('actividades.index')->with('success', 'Actividad actualizada correctamente');
+        return redirect()->route('actividades.index')->with('message', 'Actividad actualizada correctamente');
     }  
     
         public function destroy($id)
@@ -172,7 +172,7 @@ class CrearActividadController extends Controller
         // Eliminar la actividad
         $actividad->delete();
 
-        return redirect()->route('actividades.index')->with('success', 'Actividad eliminada correctamente');
+        return redirect()->route('actividades.index')->with('message', 'Actividad eliminada correctamente');
     }
 
 

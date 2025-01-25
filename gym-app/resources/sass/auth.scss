@@ -55,7 +55,16 @@
         color: #6c757d;
     }
 
-    button {
+    a {
+        background-color: #f8fafc;
+        color: #000000;
+        &:hover {
+            background-color: #f8fafc;
+            color: #B70F0A;
+        }
+    }
+
+    .button-solicitar {
         margin-top: 1em;
         background-color: #B70F0A;
         color: #f8fafc;

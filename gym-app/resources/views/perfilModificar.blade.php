@@ -186,9 +186,9 @@
             </div>
             
             <!-- Botón de Guardar Cambios -->
-            <div class="text-center">
-                <button type="submit" class="btn btn-danger m-2 button-predefined">Guardar Cambios</button>
-                <a href="/perfil">Cancelar</a>
+            <div class="text-center actividad-estilos">
+                <button type="submit" class="btn btn-danger m-2">Guardar Cambios</button>
+                <a href="/perfil" class="btn a-volver">Cancelar</a>
             </div>
         </form>
     </div>

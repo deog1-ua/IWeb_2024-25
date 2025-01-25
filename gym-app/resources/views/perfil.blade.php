@@ -79,7 +79,10 @@
         <!-- Botones -->
         <div class="text-center">
             <a href="/perfil/modificar" class="btn mb-2">Modificar Datos</a>
-            <a href="/perfil/dar-baja" class="btn mb-2">Darme de Baja</a>
+
+            @if (Auth::user()->tipo_usuario == "socio" )
+                <a href="/perfil/dar-baja" class="btn mb-2">Darme de Baja</a>
+            @endif
         </div>
     </div>
 </div>

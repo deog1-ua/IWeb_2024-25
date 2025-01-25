@@ -18,8 +18,11 @@ return new class extends Migration
             $table->date('fecha');
             $table->string('sala');
             $table->integer('aforo');
-            $table->foreignId('actividad_id')->nullable()->constrained('actividades')->onDelete('cascade'); 
+            $table->foreignId('actividad_id')->nullable()->constrained('actividades')->onDelete('cascade');    
+            $table->foreignId('sala_id')->nullable()->constrained('salas')->onDelete('set null'); 
             $table->timestamps();
+
+            $table->unique(['fecha', 'hora_inicio', 'sala_id'], 'unique_sala_horario');
         });
     }
 

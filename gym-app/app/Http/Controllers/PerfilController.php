@@ -46,7 +46,7 @@ class PerfilController extends Controller
                 'pais' => 'required|string|max:255',
                 'provincia' => 'required|string|max:255',
                 'municipio' => 'required|string|max:255',
-                'cp' => 'required|string|max:5',
+                'cp' => 'required|string|regex:/^\d{5}$/',
                 'direccion_envio' => 'required|string|max:255',
             ]
         );
@@ -68,9 +68,8 @@ class PerfilController extends Controller
         $datos_password = $request->validate(
             [
                 'password_actual' => 'required|string',
-                'password_nuevo' => 'required|string|min:8',
-                'repetir_password' => 'required|string|min:8',
-
+                'password_nuevo' => 'required|string|min:8|regex:/[A-Z]/|regex:/[a-z]/|regex:/[0-9]/|regex:/[@$!%*?&]/',
+                'repetir_password' => 'required|string|min:8|regex:/[A-Z]/|regex:/[a-z]/|regex:/[0-9]/|regex:/[@$!%*?&]/'
             ]
         );
         if (!password_verify($datos_password['password_actual'], auth()->user()->password)) {

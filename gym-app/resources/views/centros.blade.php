@@ -31,11 +31,11 @@
                 </div>
             </div>
             <!-- Botón de contacto -->
-            <div class="col-md-6">
+            <div class="col-md-6 a-contacto">
                 <div class="info-box p-4 text-center">
                     <h3>Contáctanos</h3>
                     <p>Ponte en contacto con nosotros y resuelve cualquier duda.</p>
-                    <a href="#" class="btn btn-danger">Contáctanos</a>
+                    <a href="/contacto" class="btn">Contáctanos</a>
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
                             <li><i class="fas fa-clock"></i> Sábados: 9:00 a 15:00 y 18:00 a 21:00</li>
                             <li><i class="fas fa-clock"></i> Domingos y festivos: 9:00 a 15:00</li>
                             <li><i class="fas fa-map-marker-alt"></i> Calle Serrano Jover, 3, 03001 Alicante</li>
-                            <li><i class="fas fa-envelope"></i> fitnessgym@company.com</li>
+                            <li><i class="fas fa-envelope"></i> fmpp3@gcloud.ua.es</li>
                             <li><i class="fas fa-phone"></i> +1-617-555-0108</li>
                         </ul>
                     </div>
@@ -74,7 +74,7 @@
                     <div id="map2" class="map mb-3"></div>
                     <ul class="list-unstyled">
                         <li><i class="fas fa-map-marker-alt"></i> Calle Alameda, 123, 03001 Alicante</li>
-                        <li><i class="fas fa-envelope"></i> fitnessgym@company.com</li>
+                        <li><i class="fas fa-envelope"></i> deog1@gcloud.ua.es</li>
                         <li><i class="fas fa-phone"></i> +1-632-960985</li>
                         <li><i class="fas fa-clock"></i> Lunes a viernes: 07:00 a 23:00</li>
                         <li><i class="fas fa-clock"></i> Sábados: 9:00 a 15:00 y 18:00 a 21:00</li>
@@ -88,7 +88,7 @@
                     <div id="map3" class="map mb-3"></div>
                     <ul class="list-unstyled">
                         <li><i class="fas fa-map-marker-alt"></i> Calle Benetussen, 13, 03001 Alicante</li>
-                        <li><i class="fas fa-envelope"></i> fitnessgym@company.com</li>
+                        <li><i class="fas fa-envelope"></i> jse22@gcloud.ua.es</li>
                         <li><i class="fas fa-phone"></i> +1-632-960985</li>
                         <li><i class="fas fa-clock"></i> Lunes a viernes: 07:00 a 23:00</li>
                         <li><i class="fas fa-clock"></i> Sábados: 9:00 a 15:00 y 18:00 a 21:00</li>

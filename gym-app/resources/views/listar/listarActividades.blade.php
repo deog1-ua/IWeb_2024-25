@@ -9,7 +9,7 @@
                 <p>Consulta nuestras actividades y apúntate a la que más te guste</p>
             @else
                 <p>Consulta nuestros planes y tarifas </p>
-                <a href="/" class="btn btn-primary btn-lg">Inscribirme</a>
+                <a href="/registro" class="btn btn-danger btn-lg">Inscribirme</a>
             @endif
         </div>
     </div>

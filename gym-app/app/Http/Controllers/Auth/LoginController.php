@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Direccion;
 use App\Models\Password;
+use App\Rules\ValidDni;
 
 class LoginController extends Controller
 {
@@ -14,7 +15,7 @@ class LoginController extends Controller
 
         $datos_usuario = $request->validate(
             [
-                'dni' => 'required|string|max:10|unique:usuarios',
+                'dni' => ['required', 'string', new ValidDni, 'max:10', 'unique:usuarios'],
                 'nombre' => 'required|string|max:255',
                 'apellidos' => 'required|string|max:255',
                 'nombre_usuario' => 'required|string|max:255|unique:usuarios',
@@ -33,14 +34,14 @@ class LoginController extends Controller
                 'pais' => 'required|string|max:255',
                 'provincia' => 'required|string|max:255',
                 'municipio' => 'required|string|max:255',
-                'cp' => 'required|string|max:5',
+                'cp' => 'required|string|regex:/^\d{5}$/',
                 'direccion_envio' => 'required|string|max:255',
             ]
         );
 
         $datos_password = $request->validate(
             [
-                'password' => 'required|string|min:8',
+                'password' => 'required|string|min:8|regex:/[A-Z]/|regex:/[a-z]/|regex:/[0-9]/|regex:/[@$!%*?&]/',
             ]
         );
 
@@ -72,7 +73,7 @@ class LoginController extends Controller
     public function login(Request $request) {
         $datos = $request->validate(
             [
-                'email' => 'required|string',
+                'email' => 'required|email',
                 'password' => 'required|string',
             ]
         );
@@ -80,9 +81,11 @@ class LoginController extends Controller
         $user = User::where('email', $datos['email'])->first();
         if ($user) {
             
-            //$password = Password::where('usuario_id', $user->id)->latest();
             $password = $user->password;
             if ($password && password_verify($datos['password'], $password)) {
+                if ($user->bloqueado) {
+                    return redirect()->back()->withErrors(['general' => 'Tu cuenta está bloqueada. Contacta con el administrador.']);
+                }
                 if ($user->activo) {
                     auth()->login($user);
                     return view('dashboard', ['user' => $user]);

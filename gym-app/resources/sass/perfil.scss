@@ -21,18 +21,17 @@
     }
 
     a {
-        color: #B70F0A;
-        text-decoration: underline;
-        text-decoration-color: #B70F0A;
-        background-color: #f8fafc;
+        background-color: #6c757d;
+        color: #f8fafc;
+        border: 1px solid #6c757d;
         &:hover {
             background-color: #f8fafc;
-            color: #212529;
+            color: #6c757d;
+            border: 1px solid #6c757d;
         }
     }
 
     button {
-        margin-top: 1em;
         background-color: #B70F0A;
         color: #f8fafc;
         border: 1px solid #B70F0A;
@@ -100,13 +99,22 @@
     }
 
     a {
-        color: #B70F0A;
-        text-decoration: underline;
-        text-decoration-color: #B70F0A;
         background-color: #f8fafc;
+        color: #000000;
         &:hover {
             background-color: #f8fafc;
-            color: #212529;
+            color: #B70F0A;
+        }
+    }
+
+    .a-volver {
+        background-color: #6c757d;
+        color: #f8fafc;
+        border: 1px solid #6c757d;
+        &:hover {
+            background-color: #f8fafc;
+            color: #6c757d;
+            border: 1px solid #6c757d;
         }
     }
 }

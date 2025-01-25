@@ -131,9 +131,11 @@
 
                         <div class="d-grid gap-2">
                             @guest
-                                <a href="/login" class="btn btn-dark btn-lg card-basic">Elegir plan</a>
+                                <a href="/login" class="btn btn-dark btn-lg card-standard">Elegir plan</a>
                             @else
-                                <a href="#" class="btn btn-dark btn-lg card-basic">Elegir plan</a>
+                                @if (Auth::user()->tipo_usuario == "socio")
+                                    <a href="/wallet" class="btn btn-dark btn-lg card-standard">Elegir plan</a>
+                                @endif
                             @endguest
                         </div>
                     </div>
@@ -158,7 +160,9 @@
                             @guest
                                 <a href="/login" class="btn btn-dark btn-lg card-standard">Elegir plan</a>
                             @else
-                                <a href="#" class="btn btn-dark btn-lg card-standard">Elegir plan</a>
+                                @if (Auth::user()->tipo_usuario == "socio")
+                                    <a href="/wallet" class="btn btn-dark btn-lg card-standard">Elegir plan</a>
+                                @endif
                             @endguest
                         </div>
                     </div>
@@ -181,9 +185,11 @@
 
                         <div class="d-grid gap-2">
                             @guest
-                                <a href="/login" class="btn btn-dark btn-lg card-premium">Elegir plan</a>
+                                <a href="/login" class="btn btn-dark btn-lg card-standard">Elegir plan</a>
                             @else
-                                <a href="#" class="btn btn-dark btn-lg card-premium">Elegir plan</a>
+                                @if (Auth::user()->tipo_usuario == "socio")
+                                    <a href="/wallet" class="btn btn-dark btn-lg card-standard">Elegir plan</a>
+                                @endif
                             @endguest
                         </div>
                     </div>
