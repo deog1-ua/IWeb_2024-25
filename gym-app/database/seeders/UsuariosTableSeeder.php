@@ -45,8 +45,8 @@ class UsuariosTableSeeder extends Seeder
                 'peso' => 70.0,
                 'altura' => 170,
                 'fecha_alta' => now(),
-                'activo' => now()->subDays(10), // Usuario inactivo
-                'fecha_baja' => null,
+                'activo' =>  false,
+                'fecha_baja' => now()->subDays(10), // Usuario inactivo
                 'direccion_id' => 2,
                 'saldo' => 30.00,
                 'imagen' => 'images-profile/user-default.jpg',
